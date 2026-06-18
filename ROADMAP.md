@@ -45,9 +45,11 @@ Full product spec: `~/Desktop/AI Projects/Listening Course Platform/more-english
 - **Test:** view dashboard as teacher
 - **Commit:** teacher dashboard
 
-## ⬜ Stage 5 — Deploy to Railway
-- [ ] Connect GitHub repo to Railway, set env vars, auto-deploy on push to main
-- **Test:** open the live URL and log in
+## 🔄 Stage 5 — Deploy to Railway
+- [x] Railway-ready config: `start` script (serve dist), Node pin, `railway.json`
+- [x] Verified production build + SPA serving locally
+- [ ] Connect GitHub repo to Railway + set env vars (needs Margarita's Railway account)
+- [ ] Confirm live URL loads
 - **Commit:** deploy config
 
 ---
