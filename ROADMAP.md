@@ -16,11 +16,11 @@ Full product spec: `~/Desktop/AI Projects/Listening Course Platform/more-english
 - **Test:** app runs locally and shows "✓ Supabase connected"
 - **Commit:** initial project skeleton
 
-## ⬜ Stage 1 — Database schema + auth
-- [ ] Create tables: levels, modules, exercises, audio_clips, segments, gaps, features, profiles, attempts
-- [ ] Row Level Security (students see only their own data; teacher sees all)
-- [ ] Create a teacher login (Margarita) + one demo student login
-- **Test:** log in as each account; confirm data isolation
+## ✅ Stage 1 — Database schema + auth
+- [x] Create tables: levels, modules, exercises, audio_clips, segments, gaps, features, profiles, attempts
+- [x] Row Level Security (students see only their own data; teacher sees all)
+- [x] Create a teacher login (Margarita) + one demo student login
+- **Test:** ✓ both accounts log in; ✓ student sees only own profile, teacher sees all (RLS verified); ✓ security advisor clean of errors
 - **Commit:** database schema + auth
 
 ## ⬜ Stage 2 — Listening exercise (core)
