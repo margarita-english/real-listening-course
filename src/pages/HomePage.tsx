@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
+import { supabase } from '../lib/supabase'
 
 const UNITS = [
   { slug: 'unit11-scott', title: 'Unit 11 — Scott', subtitle: 'A Place I Know Well', total: 21 },
@@ -7,6 +9,13 @@ const UNITS = [
 
 export default function HomePage() {
   const { user, signOut } = useAuth()
+  const [isTeacher, setIsTeacher] = useState(false)
+
+  useEffect(() => {
+    if (!user) return
+    supabase.from('profiles').select('role').eq('id', user.id).single()
+      .then(({ data }) => { if (data?.role === 'teacher') setIsTeacher(true) })
+  }, [user])
 
   function getProgress(slug: string) {
     const saved = localStorage.getItem(`progress:${slug}`)
@@ -20,12 +29,14 @@ export default function HomePage() {
           <p className="text-xs font-semibold uppercase tracking-widest text-teal-600">MORE English</p>
           <h1 className="text-lg font-bold text-slate-900">Real Listening Course</h1>
         </div>
-        <button
-          onClick={signOut}
-          className="text-xs text-slate-400 hover:text-slate-600"
-        >
-          Sign out
-        </button>
+        <div className="flex items-center gap-3">
+          {isTeacher && (
+            <Link to="/admin" className="text-xs text-teal-600 hover:text-teal-800 font-medium">
+              👩‍🏫 Students
+            </Link>
+          )}
+          <button onClick={signOut} className="text-xs text-slate-400 hover:text-slate-600">Sign out</button>
+        </div>
       </header>
 
       <main className="max-w-xl mx-auto px-4 py-8 space-y-4">
