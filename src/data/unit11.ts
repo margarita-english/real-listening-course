@@ -329,16 +329,34 @@ const unit11: Unit = {
       sectionLabel: '4. Further Listening Practice',
       part: 'B  Linking',
       audioFile: 'unit11/186.mp3',
-      audioLabel: 'Tracks 186 & 187',
+      audioLabel: 'Track 186',
       instruction:
-        'Linking occurs when the end of one word runs into the start of the next word. Mark where linking occurs in these excerpts, then listen to check your answers.',
+        'Linking occurs when the end of one word runs into the start of the next word. It is very common in informal spoken English, but less so in more formal English, such as speeches or lectures.',
       intro:
-        'The most common linking occurs between the letter <em>-s</em> at the end of a word when the next word begins with a vowel. Look at these examples first:\n1. Everyone lives_in mansionettes.\n2. every house looks_exactly the same\n3. there\'s_a couple in the main room\n\nNow mark the linking in the sentences below, then listen.',
+        'The most common linking occurs between the letter <em>-s</em> at the end of a word when the next word begins with a vowel, as in these excerpts from the interview:',
+      items: [
+        { number: 1, text: 'Everyone lives_in mansionettes.' },
+        { number: 2, text: 'every house looks_exactly the same' },
+        { number: 3, text: 'there\'s_a couple in the main room' },
+      ],
+    },
+
+    {
+      id: '4b2',
+      kind: 'noticeListen',
+      sectionLabel: '4. Further Listening Practice',
+      part: 'B  Linking (continued)',
+      audioFile: 'unit11/187.mp3',
+      audioLabel: 'Track 187',
+      instruction:
+        'However, linking also occurs with other sounds. Mark where linking occurs in these excerpts, then listen to check your answers.',
+      intro:
+        'Mark where linking occurs in the sentences below, then listen to check.',
       revealLabel: 'Show linking marks',
       revealContent: `1. I live_in Maida Vale, which is_not far from here_at Regent's Park and the_Academy...
 2. It's basically_a block_of um, apartments – two_or three-bedroom apartments – stacked_on top_of each_other.
 3. And they're_often referred to_as 'mansions'.
-4. And they're often referred_to as 'mansions'... So your_address is 96 Elgin Mansions...
+4. So your_address is 96 Elgin Mansions...
 5. And it's_also close_to_an_area called Little Venice`,
       items: [
         { number: 1, text: 'I live in Maida Vale, which is not far from here at Regent\'s Park and the Academy...' },
@@ -443,6 +461,7 @@ const unit11: Unit = {
   ],
 
   // ─── 6. TRANSCRIPT ────────────────────────────────────────────────────────
+  transcriptAudioFile: 'unit11/189.mp3',
   transcript: [
     { speaker: 'I', text: 'Can you tell me where you live in London?' },
     { speaker: 'S', text: 'OK, yes. Er, at the moment I live in (1) Maida Vale, which is not far from here at (2) Regent\'s Park and (3) the Academy. Um, I moved there about a year ... (4) a bit over a year ago. So it\'s a ... it\'s actually a really nice part of London. Very quiet, very ... um, wide streets. Everyone lives in (5) mansionettes, so you walk down the street and every house looks exactly the same – or every block of apartments looks exactly the same.' },

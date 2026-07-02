@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import unit11 from '../data/unit11'
 import type { Unit } from '../types'
+import AudioPlayer from '../components/AudioPlayer'
 
 const UNITS: Record<string, Unit> = { 'unit11-scott': unit11 }
 
@@ -44,7 +45,10 @@ export default function ReferencePage() {
 
         {tab === 'transcript' && (
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm divide-y divide-slate-100">
-            <div className="px-4 py-2 bg-slate-50 rounded-t-2xl">
+            <div className="px-4 py-3 bg-slate-50 rounded-t-2xl space-y-2">
+              {unit.transcriptAudioFile && (
+                <AudioPlayer src={`/audio/${unit.transcriptAudioFile}`} label="Full transcript" />
+              )}
               <p className="text-xs text-slate-500">
                 <strong>I</strong> = Interviewer &nbsp;|&nbsp; <strong>S</strong> = Scott
               </p>

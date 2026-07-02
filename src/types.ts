@@ -96,6 +96,7 @@ export interface Unit {
   subtitle: string
   steps: Step[]
   transcript: TranscriptLine[]
+  transcriptAudioFile?: string
   glossary: GlossaryEntry[]
 }
 

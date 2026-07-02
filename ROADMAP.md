@@ -26,7 +26,7 @@ Full product spec: `~/Desktop/AI Projects/Listening Course Platform/more-english
 ## ✅ Stage 2 — Unit 11 (Scott) — full digitised unit
 - [x] Login page (email + password via Supabase Auth) + auth guard
 - [x] Home page — unit list with progress bar (localStorage)
-- [x] **Unit 11 "Scott" fully digitised** (21 steps from the PDF):
+- [x] **Unit 11 "Scott" fully digitised** (22 steps from the PDF):
   - Section 1: Pre-Listening — MCQ, Discussion info card, Normalisation gap-fill (track 176)
   - Section 2: Listening Comprehension — Q&A (tracks 177,179,181) + Gap-fill (tracks 178,180,182)
   - Section 3: Language Points — grammar info cards, Australian accent notice-listen (tracks 183,184)
@@ -37,7 +37,7 @@ Full product spec: `~/Desktop/AI Projects/Listening Course Platform/more-english
 - [x] Inline answer checking with colour feedback for gap-fill + MCQ; model answers for Q&A
 - [x] Transcript (Part 6) + Glossary (Part 7) on separate /reference route (📄 icon in header)
 - [x] Progress saved in localStorage; restores on reload
-- [x] **Audio files added** — `public/audio/unit11/176.mp3` … `189.mp3` (187 and 189 are on disk but not yet wired into a step)
+- [x] **Audio files added** — `public/audio/unit11/176.mp3` … `189.mp3`, all wired into steps (187 is its own "Linking (continued)" step; 189 plays on the Reference/Transcript page)
 - [ ] Migration `0003_unit_progress.sql` ready — apply once Supabase project is reactivated
 - **Test:** build passes ✓; login → home → unit → steps → transcript/glossary all navigate correctly
 - **Commit:** Stage 2 — Unit 11 full digitised unit

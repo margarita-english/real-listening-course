@@ -4,7 +4,7 @@ import { useAuth } from '../contexts/AuthContext'
 import { supabase } from '../lib/supabase'
 
 const UNITS = [
-  { slug: 'unit11-scott', title: 'Unit 11 — Scott', subtitle: 'A Place I Know Well', total: 21 },
+  { slug: 'unit11-scott', title: 'Unit 11 — Scott', subtitle: 'A Place I Know Well', total: 22 },
 ]
 
 export default function HomePage() {
