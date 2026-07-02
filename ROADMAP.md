@@ -37,7 +37,7 @@ Full product spec: `~/Desktop/AI Projects/Listening Course Platform/more-english
 - [x] Inline answer checking with colour feedback for gap-fill + MCQ; model answers for Q&A
 - [x] Transcript (Part 6) + Glossary (Part 7) on separate /reference route (📄 icon in header)
 - [x] Progress saved in localStorage; restores on reload
-- [ ] **Audio files still needed** — drop MP3s into `public/audio/unit11/` named `176.mp3` … `188.mp3`
+- [x] **Audio files added** — `public/audio/unit11/176.mp3` … `189.mp3` (187 and 189 are on disk but not yet wired into a step)
 - [ ] Migration `0003_unit_progress.sql` ready — apply once Supabase project is reactivated
 - **Test:** build passes ✓; login → home → unit → steps → transcript/glossary all navigate correctly
 - **Commit:** Stage 2 — Unit 11 full digitised unit
