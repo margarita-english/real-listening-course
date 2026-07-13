@@ -7,11 +7,38 @@ interface Props {
   onComplete: () => void
 }
 
+const STOPWORDS = new Set([
+  'a', 'an', 'the', 'is', 'are', 'was', 'were', 'in', 'on', 'at', 'to', 'of', 'and', 'or',
+  'but', 'from', 'with', 'for', 'it', 'its', 'this', 'that', 'these', 'those', 'he', 'she',
+  'they', 'you', 'i', 'we', 'his', 'her', 'their', 'your', 'my', 'our', 'be', 'do', 'does',
+  'did', 'has', 'have', 'had', 'not', 'no', 'so', 'as', 'by', 'if', 'when', 'what', 'which',
+  'who', 'whom', 'where', 'why', 'how',
+])
+
+function normalize(s: string) {
+  return s.toLowerCase().replace(/[^a-z0-9\s']/g, ' ').replace(/\s+/g, ' ').trim()
+}
+
+function keywords(modelAnswer: string) {
+  return normalize(modelAnswer).split(' ').filter(w => w && !STOPWORDS.has(w))
+}
+
+// Lenient grading: correct if the student's answer contains most of the
+// model answer's key content words, regardless of exact phrasing.
+function isCorrect(studentAnswer: string, modelAnswer: string) {
+  const kw = keywords(modelAnswer)
+  if (kw.length === 0) return false
+  const studentNorm = normalize(studentAnswer)
+  const matched = kw.filter(w => studentNorm.includes(w))
+  return matched.length / kw.length >= 0.5
+}
+
 export default function QaStepView({ step, onComplete }: Props) {
   const [answers, setAnswers] = useState<string[]>(step.questions.map(() => ''))
   const [submitted, setSubmitted] = useState(false)
 
   const allFilled = answers.every(a => a.trim() !== '')
+  const correctCount = step.questions.filter((q, i) => isCorrect(answers[i], q.modelAnswer)).length
 
   return (
     <div className="space-y-4">
@@ -37,9 +64,23 @@ export default function QaStepView({ step, onComplete }: Props) {
               />
             ) : (
               <div className="space-y-1.5">
-                <div className="bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-700">
-                  <span className="text-slate-400 text-xs font-medium uppercase tracking-wide block mb-0.5">Your answer</span>
-                  {answers[i] || <em className="text-slate-400">left blank</em>}
+                <div
+                  className={[
+                    'border rounded-lg px-3 py-2 text-sm',
+                    isCorrect(answers[i], q.modelAnswer)
+                      ? 'bg-green-50 border-green-200 text-green-800'
+                      : 'bg-red-50 border-red-200 text-red-700',
+                  ].join(' ')}
+                >
+                  <span
+                    className={[
+                      'text-xs font-medium uppercase tracking-wide block mb-0.5',
+                      isCorrect(answers[i], q.modelAnswer) ? 'text-green-600' : 'text-red-500',
+                    ].join(' ')}
+                  >
+                    Your answer
+                  </span>
+                  {answers[i] || <em className="text-red-400">left blank</em>}
                 </div>
                 <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2 text-sm text-green-800">
                   <span className="text-green-600 text-xs font-medium uppercase tracking-wide block mb-0.5">Model answer</span>
@@ -60,12 +101,17 @@ export default function QaStepView({ step, onComplete }: Props) {
           Submit &amp; see answers
         </button>
       ) : (
-        <button
-          onClick={onComplete}
-          className="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl text-sm transition-colors"
-        >
-          Continue →
-        </button>
+        <div className="space-y-2">
+          <p className="text-sm text-green-700 font-medium">
+            ✓ {correctCount} / {step.questions.length} correct
+          </p>
+          <button
+            onClick={onComplete}
+            className="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl text-sm transition-colors"
+          >
+            Continue →
+          </button>
+        </div>
       )}
     </div>
   )
