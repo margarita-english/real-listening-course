@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
+import PasswordInput from '../components/PasswordInput'
 
 type Tab = 'signup' | 'login'
 type Mode = Tab | 'forgot'
@@ -149,19 +150,17 @@ export default function AuthPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">Password</label>
-                <input
-                  type="password" required minLength={8} value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                <PasswordInput
+                  required minLength={8} value={password}
+                  onChange={setPassword}
                   placeholder="At least 8 characters"
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">Confirm password</label>
-                <input
-                  type="password" required value={confirm}
-                  onChange={e => setConfirm(e.target.value)}
-                  className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                <PasswordInput
+                  required value={confirm}
+                  onChange={setConfirm}
                   placeholder="Repeat your password"
                 />
               </div>
@@ -207,10 +206,9 @@ export default function AuthPage() {
                     Forgot password?
                   </button>
                 </div>
-                <input
-                  type="password" required value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                <PasswordInput
+                  required value={password}
+                  onChange={setPassword}
                   placeholder="••••••••"
                 />
               </div>

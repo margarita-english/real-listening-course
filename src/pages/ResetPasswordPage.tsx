@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
+import PasswordInput from '../components/PasswordInput'
 
 export default function ResetPasswordPage() {
   const navigate = useNavigate()
@@ -72,19 +73,17 @@ export default function ResetPasswordPage() {
         <form onSubmit={handleSubmit} className={`bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-4 ${linkInvalid ? 'opacity-50 pointer-events-none' : ''}`}>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">New password</label>
-            <input
-              type="password" required minLength={8} value={password}
-              onChange={e => setPassword(e.target.value)}
-              className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            <PasswordInput
+              required minLength={8} value={password}
+              onChange={setPassword}
               placeholder="At least 8 characters"
             />
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Confirm new password</label>
-            <input
-              type="password" required value={confirm}
-              onChange={e => setConfirm(e.target.value)}
-              className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            <PasswordInput
+              required value={confirm}
+              onChange={setConfirm}
               placeholder="Repeat your password"
             />
           </div>
