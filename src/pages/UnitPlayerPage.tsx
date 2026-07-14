@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import unit11 from '../data/unit11'
 import type { StepAttemptPayload, Unit } from '../types'
 import { supabase } from '../lib/supabase'
@@ -19,21 +19,32 @@ const STORAGE_KEY = (slug: string) => `progress:${slug}`
 
 export default function UnitPlayerPage() {
   const { slug } = useParams<{ slug: string }>()
+  const [searchParams] = useSearchParams()
   const unit = slug ? UNITS[slug] : null
   const { user } = useAuth()
 
   const [stepIndex, setStepIndex] = useState(0)
   const [finished, setFinished] = useState(false)
 
-  // Restore saved progress
+  // A specific step requested from the unit map takes priority; otherwise
+  // resume wherever this device last left off.
   useEffect(() => {
     if (!slug) return
+    const requested = searchParams.get('step')
+    if (requested !== null) {
+      const n = parseInt(requested, 10)
+      if (!isNaN(n) && n >= 0 && n < (unit?.steps.length ?? 0)) {
+        setStepIndex(n)
+        localStorage.setItem(STORAGE_KEY(slug), String(n))
+        return
+      }
+    }
     const saved = localStorage.getItem(STORAGE_KEY(slug))
     if (saved) {
       const n = parseInt(saved, 10)
       if (!isNaN(n) && n < (unit?.steps.length ?? 0)) setStepIndex(n)
     }
-  }, [slug])
+  }, [slug, searchParams, unit?.steps.length])
 
   if (!unit) {
     return (
@@ -94,6 +105,9 @@ export default function UnitPlayerPage() {
               Back to units
             </Link>
           </div>
+          <Link to={`/unit/${slug}`} className="block text-sm text-teal-600 hover:text-teal-800 underline">
+            🗺 View task map
+          </Link>
         </div>
       </div>
     )
@@ -106,7 +120,7 @@ export default function UnitPlayerPage() {
     <div className="min-h-screen bg-slate-50">
       {/* Top bar */}
       <header className="sticky top-0 z-10 bg-white border-b border-slate-200 px-4 py-3 flex items-center gap-3">
-        <Link to="/" className="text-slate-400 hover:text-slate-600 text-sm shrink-0">← Units</Link>
+        <Link to={`/unit/${slug}`} className="text-slate-400 hover:text-slate-600 text-sm shrink-0">← Map</Link>
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between mb-1">
             <span className="text-xs text-slate-400 truncate">{unit.title}</span>

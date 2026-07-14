@@ -10,6 +10,7 @@ const UNITS = [
 export default function HomePage() {
   const { user, signOut } = useAuth()
   const [isTeacher, setIsTeacher] = useState(false)
+  const [completedCounts, setCompletedCounts] = useState<Record<string, number>>({})
 
   useEffect(() => {
     if (!user) return
@@ -17,9 +18,24 @@ export default function HomePage() {
       .then(({ data }) => { if (data?.role === 'teacher') setIsTeacher(true) })
   }, [user])
 
+  useEffect(() => {
+    if (!user) return
+    supabase
+      .from('student_answers')
+      .select('unit_slug')
+      .eq('user_id', user.id)
+      .then(({ data, error }) => {
+        if (error) { console.error('Failed to load progress:', error.message); return }
+        const counts: Record<string, number> = {}
+        for (const row of (data ?? []) as { unit_slug: string }[]) {
+          counts[row.unit_slug] = (counts[row.unit_slug] ?? 0) + 1
+        }
+        setCompletedCounts(counts)
+      })
+  }, [user])
+
   function getProgress(slug: string) {
-    const saved = localStorage.getItem(`progress:${slug}`)
-    return saved ? parseInt(saved, 10) : 0
+    return completedCounts[slug] ?? 0
   }
 
   return (
@@ -70,7 +86,7 @@ export default function HomePage() {
               )}
 
               <p className="mt-3 text-xs text-teal-600 font-medium">
-                {step === 0 ? '▶ Start unit' : step >= u.total ? '✓ Completed' : `▶ Continue — step ${step + 1} of ${u.total}`}
+                {step === 0 ? '▶ Start unit' : step >= u.total ? '✓ Completed — view tasks' : `▶ Continue — ${step} of ${u.total} done`}
               </p>
             </Link>
           )

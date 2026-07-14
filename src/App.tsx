@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from './contexts/AuthContext'
 import AuthPage from './pages/AuthPage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import HomePage from './pages/HomePage'
+import UnitMapPage from './pages/UnitMapPage'
 import UnitPlayerPage from './pages/UnitPlayerPage'
 import ReferencePage from './pages/ReferencePage'
 import AdminPage from './pages/AdminPage'
@@ -22,7 +23,8 @@ function AppRoutes() {
       <Route path="/reset-password" element={<ResetPasswordPage />} />
       <Route path="/" element={<RequireAuth><HomePage /></RequireAuth>} />
       <Route path="/admin" element={<RequireAuth><AdminPage /></RequireAuth>} />
-      <Route path="/unit/:slug" element={<RequireAuth><UnitPlayerPage /></RequireAuth>} />
+      <Route path="/unit/:slug" element={<RequireAuth><UnitMapPage /></RequireAuth>} />
+      <Route path="/unit/:slug/play" element={<RequireAuth><UnitPlayerPage /></RequireAuth>} />
       <Route path="/unit/:slug/reference" element={<RequireAuth><ReferencePage /></RequireAuth>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
