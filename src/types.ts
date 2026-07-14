@@ -24,7 +24,9 @@ export interface GapSentence {
 export interface QaQuestion {
   number: number
   question: string
-  modelAnswer: string
+  // Omit for open-ended/opinion questions that have no single correct
+  // answer — those are just saved, not graded.
+  modelAnswer?: string
 }
 
 export interface WordBankItem {

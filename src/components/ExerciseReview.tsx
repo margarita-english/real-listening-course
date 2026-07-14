@@ -87,6 +87,16 @@ export default function ExerciseReview({ step, attempt }: Props) {
     return (
       <div className="space-y-3">
         {step.questions.map((q, i) => {
+          if (q.modelAnswer === undefined) {
+            return (
+              <div key={q.number} className="text-sm">
+                <p className="font-medium text-slate-800 mb-1">{q.number}. {q.question}</p>
+                <p className="text-teal-700">
+                  {answers[i] || <em className="text-teal-400">left blank</em>}
+                </p>
+              </div>
+            )
+          }
           const correct = isQaAnswerCorrect(answers[i] ?? '', q.modelAnswer)
           return (
             <div key={q.number} className="text-sm">

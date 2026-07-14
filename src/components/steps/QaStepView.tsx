@@ -13,7 +13,10 @@ export default function QaStepView({ step, onComplete }: Props) {
   const [submitted, setSubmitted] = useState(false)
 
   const allFilled = answers.every(a => a.trim() !== '')
-  const correctCount = step.questions.filter((q, i) => isQaAnswerCorrect(answers[i], q.modelAnswer)).length
+  const gradedCount = step.questions.filter(q => q.modelAnswer !== undefined).length
+  const correctCount = step.questions.filter((q, i) =>
+    q.modelAnswer !== undefined && isQaAnswerCorrect(answers[i], q.modelAnswer)
+  ).length
 
   return (
     <div className="space-y-4">
@@ -37,6 +40,11 @@ export default function QaStepView({ step, onComplete }: Props) {
                 className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 resize-none"
                 placeholder="Your answer…"
               />
+            ) : q.modelAnswer === undefined ? (
+              <div className="border rounded-lg px-3 py-2 text-sm bg-teal-50 border-teal-200 text-teal-800">
+                <span className="text-teal-600 text-xs font-medium uppercase tracking-wide block mb-0.5">✓ Saved</span>
+                {answers[i] || <em className="text-teal-400">left blank</em>}
+              </div>
             ) : (
               <div className="space-y-1.5">
                 <div
@@ -73,15 +81,15 @@ export default function QaStepView({ step, onComplete }: Props) {
           onClick={() => setSubmitted(true)}
           className="w-full py-2.5 bg-teal-600 hover:bg-teal-700 disabled:opacity-40 text-white font-semibold rounded-xl text-sm transition-colors"
         >
-          Submit &amp; see answers
+          {gradedCount > 0 ? 'Submit & see answers' : 'Submit'}
         </button>
       ) : (
         <div className="space-y-2">
           <p className="text-sm text-green-700 font-medium">
-            ✓ {correctCount} / {step.questions.length} correct
+            {gradedCount > 0 ? `✓ ${correctCount} / ${gradedCount} correct` : '✓ Answers saved'}
           </p>
           <button
-            onClick={() => onComplete({ answers, score: correctCount / step.questions.length })}
+            onClick={() => onComplete({ answers, score: gradedCount > 0 ? correctCount / gradedCount : null })}
             className="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl text-sm transition-colors"
           >
             Continue →

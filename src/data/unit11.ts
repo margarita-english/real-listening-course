@@ -43,14 +43,14 @@ const unit11: Unit = {
 
     {
       id: '1b',
-      kind: 'info',
+      kind: 'qa',
       sectionLabel: '1. Pre-Listening Comprehension',
       part: 'B  Discussion',
-      instruction: 'Discuss the questions in small groups. Share your answers with the class.',
-      body: [
-        '1.  Do you know anything else about Australia?',
-        '2.  Why do you think Scott decided to leave Australia and go to live in London?',
-        '3.  Do you know what an Australian accent sounds like?',
+      instruction: 'Think about the questions. Write your answers in the answer box and receive feedback.',
+      questions: [
+        { number: 1, question: 'Do you know anything else about Australia?' },
+        { number: 2, question: 'Why do you think Scott decided to leave Australia and go to live in London?' },
+        { number: 3, question: 'Do you know what an Australian accent sounds like?' },
       ],
     },
 
