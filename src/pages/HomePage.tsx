@@ -34,8 +34,12 @@ export default function HomePage() {
       })
   }, [user])
 
+  // Progress made before answer history existed only lives in localStorage —
+  // treat it as a floor so students who already got ahead don't see 0%.
   function getProgress(slug: string) {
-    return completedCounts[slug] ?? 0
+    const saved = localStorage.getItem(`progress:${slug}`)
+    const legacy = saved ? parseInt(saved, 10) : 0
+    return Math.max(completedCounts[slug] ?? 0, isNaN(legacy) ? 0 : legacy)
   }
 
   return (

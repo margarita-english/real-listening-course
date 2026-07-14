@@ -58,9 +58,20 @@ export default function UnitMapPage() {
     )
   }
 
+  // Progress made before answer history existed only lives in localStorage —
+  // treat it as a floor so students who already got ahead don't get relocked.
+  const legacyCount = (() => {
+    if (!slug) return 0
+    const saved = localStorage.getItem(`progress:${slug}`)
+    const n = saved ? parseInt(saved, 10) : 0
+    return isNaN(n) ? 0 : Math.min(n, unit.steps.length)
+  })()
+
   // The next unattempted step, in order, is the only "future" step unlocked for now.
-  const unlockedIndex = unit.steps.findIndex(s => !attempts[s.id])
-  const completedCount = unlockedIndex === -1 ? unit.steps.length : unlockedIndex
+  const firstUnattempted = unit.steps.findIndex(s => !attempts[s.id])
+  const supabaseCompletedCount = firstUnattempted === -1 ? unit.steps.length : firstUnattempted
+  const completedCount = Math.max(supabaseCompletedCount, legacyCount)
+  const unlockedIndex = completedCount >= unit.steps.length ? -1 : completedCount
 
   // Group steps by section while keeping their overall index.
   const sections: { label: string; steps: { step: typeof unit.steps[number]; index: number }[] }[] = []
@@ -160,7 +171,13 @@ export default function UnitMapPage() {
                   openStepId === step.id && nodeStatus(index) === 'done' && (
                     <div key={step.id} className="mt-3 bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
                       <p className="text-sm font-semibold text-slate-800 mb-3">{step.part}</p>
-                      <ExerciseReview step={step} attempt={attempts[step.id]} />
+                      {attempts[step.id] ? (
+                        <ExerciseReview step={step} attempt={attempts[step.id]} />
+                      ) : (
+                        <p className="text-sm text-slate-400 italic">
+                          You completed this before answer history was added, so there's nothing saved to show here.
+                        </p>
+                      )}
                     </div>
                   )
                 ))}

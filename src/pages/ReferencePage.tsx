@@ -47,6 +47,16 @@ export default function ReferencePage() {
     )
   }
 
+  // Progress made before answer history existed only lives in localStorage —
+  // treat those steps as completed too, so they don't wrongly show "not attempted".
+  const legacyCount = (() => {
+    if (!slug) return 0
+    const saved = localStorage.getItem(`progress:${slug}`)
+    const n = saved ? parseInt(saved, 10) : 0
+    return isNaN(n) ? 0 : Math.min(n, unit.steps.length)
+  })()
+  const completedCount = Math.max(Object.keys(attempts).length, legacyCount)
+
   return (
     <div className="min-h-screen bg-slate-50">
       <header className="sticky top-0 z-10 bg-white border-b border-slate-200 px-4 py-3 flex items-center gap-3">
@@ -74,11 +84,12 @@ export default function ReferencePage() {
         {tab === 'exercises' && (
           <div className="space-y-3">
             <p className="text-sm text-slate-500">
-              {Object.keys(attempts).length} / {unit.steps.length} exercises completed
+              {completedCount} / {unit.steps.length} exercises completed
             </p>
             <div className="bg-white rounded-2xl border border-slate-200 shadow-sm divide-y divide-slate-100">
               {unit.steps.map((step, i) => {
                 const attempt = attempts[step.id]
+                const isLegacyDone = !attempt && i < legacyCount
                 const isOpen = openStepId === step.id
                 return (
                   <div key={step.id}>
@@ -91,9 +102,9 @@ export default function ReferencePage() {
                         {step.part}
                       </span>
                       <span className="shrink-0 text-xs">
-                        {!attempt ? (
+                        {!attempt && !isLegacyDone ? (
                           <span className="text-slate-300">not attempted</span>
-                        ) : attempt.score === null ? (
+                        ) : attempt?.score == null ? (
                           <span className="text-slate-400">✓ viewed</span>
                         ) : (
                           <span className={attempt.score >= 0.5 ? 'text-green-600 font-medium' : 'text-red-500 font-medium'}>
@@ -105,7 +116,15 @@ export default function ReferencePage() {
                     </button>
                     {isOpen && (
                       <div className="px-4 pb-4">
-                        <ExerciseReview step={step} attempt={attempt} />
+                        {attempt ? (
+                          <ExerciseReview step={step} attempt={attempt} />
+                        ) : isLegacyDone ? (
+                          <p className="text-sm text-slate-400 italic">
+                            You completed this before answer history was added, so there's nothing saved to show here.
+                          </p>
+                        ) : (
+                          <ExerciseReview step={step} attempt={attempt} />
+                        )}
                       </div>
                     )}
                   </div>
