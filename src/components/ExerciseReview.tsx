@@ -1,5 +1,6 @@
 import type { Step } from '../types'
 import { isQaAnswerCorrect } from '../lib/qaGrading'
+import { answersMatch, equivalentForms } from '../lib/answerMatching'
 
 interface Attempt {
   answers: unknown
@@ -15,9 +16,11 @@ interface Props {
 function wordBankIsCorrect(input: string, answer: string) {
   const norm = input.toLowerCase().trim()
   if (answer.includes(' / ')) {
-    return answer.split(' / ').map(s => s.toLowerCase().trim()).every(p => norm.includes(p))
+    return answer.split(' / ').map(s => s.toLowerCase().trim()).every(p =>
+      equivalentForms(p).some(form => norm.includes(form))
+    )
   }
-  return norm === answer.toLowerCase()
+  return answersMatch(norm, answer)
 }
 
 export default function ExerciseReview({ step, attempt }: Props) {
@@ -66,7 +69,7 @@ export default function ExerciseReview({ step, attempt }: Props) {
                 {part}
                 {i < q.answers.length && (
                   <span className={
-                    (inputs[qi]?.[i] ?? '').toLowerCase().trim() === q.answers[i].toLowerCase()
+                    answersMatch(inputs[qi]?.[i] ?? '', q.answers[i])
                       ? 'text-green-700 font-medium mx-0.5'
                       : 'text-red-600 font-medium mx-0.5'
                   }>

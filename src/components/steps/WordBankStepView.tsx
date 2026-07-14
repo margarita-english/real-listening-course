@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { WordBankStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
+import { answersMatch, equivalentForms } from '../../lib/answerMatching'
 
 interface Props {
   step: WordBankStep
@@ -21,9 +22,9 @@ export default function WordBankStepView({ step, onComplete }: Props) {
     const input = inputs[qi].toLowerCase().trim()
     if (isMulti(q.answer)) {
       const parts = q.answer.split(' / ').map(s => s.toLowerCase().trim())
-      return parts.every(p => input.includes(p))
+      return parts.every(p => equivalentForms(p).some(form => input.includes(form)))
     }
-    return input === q.answer.toLowerCase()
+    return answersMatch(input, q.answer)
   }
 
   const correct = step.questions.filter((_, qi) => isCorrect(qi)).length

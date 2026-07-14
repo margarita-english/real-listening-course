@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import type { GapFillStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
+import { answersMatch } from '../../lib/answerMatching'
 
 interface Props {
   step: GapFillStep
@@ -37,7 +38,7 @@ function SentenceWithGaps({
                 'inline-block border-b-2 text-sm px-1 py-0 mx-0.5 w-20 focus:outline-none bg-transparent transition-colors',
                 !checked
                   ? 'border-slate-400 focus:border-teal-500'
-                  : values[i]?.toLowerCase().trim() === answers[i].toLowerCase()
+                  : answersMatch(values[i] ?? '', answers[i])
                     ? 'border-green-500 text-green-700'
                     : 'border-red-400 text-red-600',
               ].join(' ')}
@@ -65,9 +66,7 @@ export default function GapFillStepView({ step, onComplete }: Props) {
 
   function countCorrect() {
     return step.questions.reduce((sum, q, qi) =>
-      sum + q.answers.filter((ans, gi) =>
-        (inputs[qi][gi] ?? '').toLowerCase().trim() === ans.toLowerCase()
-      ).length
+      sum + q.answers.filter((ans, gi) => answersMatch(inputs[qi][gi] ?? '', ans)).length
     , 0)
   }
 
@@ -93,7 +92,7 @@ export default function GapFillStepView({ step, onComplete }: Props) {
                 checked={checked}
                 onChange={(gi, val) => handleChange(qi, gi, val)}
               />
-              {checked && inputs[qi].some((v, gi) => v.toLowerCase().trim() !== q.answers[gi].toLowerCase()) && (
+              {checked && inputs[qi].some((v, gi) => !answersMatch(v, q.answers[gi])) && (
                 <span className="ml-2 text-xs text-slate-500">
                   ✓ <span className="text-green-700">{q.answers.join(' / ')}</span>
                 </span>
