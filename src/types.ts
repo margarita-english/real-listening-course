@@ -110,3 +110,11 @@ export interface GlossaryEntry {
   term: string
   definition: string
 }
+
+// Emitted by a step view when the student finishes it, so the answers can
+// be persisted for later review. `score` is a 0–1 fraction, or null for
+// steps that aren't graded (info cards, notice-and-listen).
+export interface StepAttemptPayload {
+  answers: unknown
+  score: number | null
+}

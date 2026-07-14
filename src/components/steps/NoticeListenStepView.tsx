@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import type { NoticeListenStep } from '../../types'
+import type { NoticeListenStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
 
 interface Props {
   step: NoticeListenStep
-  onComplete: () => void
+  onComplete: (payload: StepAttemptPayload) => void
 }
 
 export default function NoticeListenStepView({ step, onComplete }: Props) {
@@ -52,7 +52,7 @@ export default function NoticeListenStepView({ step, onComplete }: Props) {
       )}
 
       <button
-        onClick={onComplete}
+        onClick={() => onComplete({ answers: null, score: null })}
         className="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl text-sm transition-colors"
       >
         Continue →

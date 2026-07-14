@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import unit11 from '../data/unit11'
-import type { Unit } from '../types'
+import type { StepAttemptPayload, Unit } from '../types'
+import { supabase } from '../lib/supabase'
+import { useAuth } from '../contexts/AuthContext'
 import InfoCard from '../components/steps/InfoCard'
 import McqStepView from '../components/steps/McqStepView'
 import GapFillStepView from '../components/steps/GapFillStepView'
@@ -18,6 +20,7 @@ const STORAGE_KEY = (slug: string) => `progress:${slug}`
 export default function UnitPlayerPage() {
   const { slug } = useParams<{ slug: string }>()
   const unit = slug ? UNITS[slug] : null
+  const { user } = useAuth()
 
   const [stepIndex, setStepIndex] = useState(0)
   const [finished, setFinished] = useState(false)
@@ -40,8 +43,28 @@ export default function UnitPlayerPage() {
     )
   }
 
-  function advance() {
+  function advance(payload: StepAttemptPayload) {
     if (!slug) return
+
+    if (user) {
+      supabase
+        .from('student_answers')
+        .upsert(
+          {
+            user_id: user.id,
+            unit_slug: slug,
+            step_id: step.id,
+            answers: payload.answers,
+            score: payload.score,
+            submitted_at: new Date().toISOString(),
+          },
+          { onConflict: 'user_id,unit_slug,step_id' },
+        )
+        .then(({ error }) => {
+          if (error) console.error('Failed to save answer:', error.message)
+        })
+    }
+
     const next = stepIndex + 1
     if (next >= unit!.steps.length) {
       localStorage.removeItem(STORAGE_KEY(slug))

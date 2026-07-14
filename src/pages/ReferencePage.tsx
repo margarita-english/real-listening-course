@@ -1,15 +1,43 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import unit11 from '../data/unit11'
 import type { Unit } from '../types'
 import AudioPlayer from '../components/AudioPlayer'
+import ExerciseReview from '../components/ExerciseReview'
+import { supabase } from '../lib/supabase'
+import { useAuth } from '../contexts/AuthContext'
 
 const UNITS: Record<string, Unit> = { 'unit11-scott': unit11 }
+
+interface Attempt {
+  step_id: string
+  answers: unknown
+  score: number | null
+  submitted_at: string
+}
 
 export default function ReferencePage() {
   const { slug } = useParams<{ slug: string }>()
   const unit = slug ? UNITS[slug] : null
-  const [tab, setTab] = useState<'transcript' | 'glossary'>('transcript')
+  const { user } = useAuth()
+  const [tab, setTab] = useState<'exercises' | 'transcript' | 'glossary'>('exercises')
+  const [attempts, setAttempts] = useState<Record<string, Attempt>>({})
+  const [openStepId, setOpenStepId] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!user || !slug) return
+    supabase
+      .from('student_answers')
+      .select('step_id, answers, score, submitted_at')
+      .eq('user_id', user.id)
+      .eq('unit_slug', slug)
+      .then(({ data, error }) => {
+        if (error) { console.error('Failed to load past answers:', error.message); return }
+        const byStep: Record<string, Attempt> = {}
+        for (const row of (data ?? []) as Attempt[]) byStep[row.step_id] = row
+        setAttempts(byStep)
+      })
+  }, [user, slug])
 
   if (!unit) {
     return (
@@ -29,7 +57,7 @@ export default function ReferencePage() {
       <main className="max-w-2xl mx-auto px-4 py-6">
         {/* Tabs */}
         <div className="flex gap-2 mb-5">
-          {(['transcript', 'glossary'] as const).map(t => (
+          {(['exercises', 'transcript', 'glossary'] as const).map(t => (
             <button
               key={t}
               onClick={() => setTab(t)}
@@ -38,10 +66,54 @@ export default function ReferencePage() {
                 tab === t ? 'bg-teal-600 text-white' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50',
               ].join(' ')}
             >
-              {t === 'transcript' ? '🎙 Transcript' : '📚 Words & Phrases'}
+              {t === 'exercises' ? '✅ My Exercises' : t === 'transcript' ? '🎙 Transcript' : '📚 Words & Phrases'}
             </button>
           ))}
         </div>
+
+        {tab === 'exercises' && (
+          <div className="space-y-3">
+            <p className="text-sm text-slate-500">
+              {Object.keys(attempts).length} / {unit.steps.length} exercises completed
+            </p>
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm divide-y divide-slate-100">
+              {unit.steps.map((step, i) => {
+                const attempt = attempts[step.id]
+                const isOpen = openStepId === step.id
+                return (
+                  <div key={step.id}>
+                    <button
+                      onClick={() => setOpenStepId(isOpen ? null : step.id)}
+                      className="w-full flex items-center justify-between gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
+                    >
+                      <span className="text-sm text-slate-700 min-w-0 truncate">
+                        <span className="text-slate-400 mr-2">{i + 1}.</span>
+                        {step.part}
+                      </span>
+                      <span className="shrink-0 text-xs">
+                        {!attempt ? (
+                          <span className="text-slate-300">not attempted</span>
+                        ) : attempt.score === null ? (
+                          <span className="text-slate-400">✓ viewed</span>
+                        ) : (
+                          <span className={attempt.score >= 0.5 ? 'text-green-600 font-medium' : 'text-red-500 font-medium'}>
+                            {Math.round(attempt.score * 100)}%
+                          </span>
+                        )}
+                        <span className="ml-2 text-slate-300">{isOpen ? '▲' : '▼'}</span>
+                      </span>
+                    </button>
+                    {isOpen && (
+                      <div className="px-4 pb-4">
+                        <ExerciseReview step={step} attempt={attempt} />
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )}
 
         {tab === 'transcript' && (
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm divide-y divide-slate-100">

@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import type { McqStep } from '../../types'
+import type { McqStep, StepAttemptPayload } from '../../types'
 
 interface Props {
   step: McqStep
-  onComplete: () => void
+  onComplete: (payload: StepAttemptPayload) => void
 }
 
 export default function McqStepView({ step, onComplete }: Props) {
@@ -73,7 +73,10 @@ export default function McqStepView({ step, onComplete }: Props) {
             ✓ {step.questions.filter(q => selected[q.number] === q.answer).length} / {step.questions.length} correct
           </p>
           <button
-            onClick={onComplete}
+            onClick={() => onComplete({
+              answers: selected,
+              score: step.questions.filter(q => selected[q.number] === q.answer).length / step.questions.length,
+            })}
             className="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl text-sm transition-colors"
           >
             Continue →

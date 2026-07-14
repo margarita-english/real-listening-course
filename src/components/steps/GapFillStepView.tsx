@@ -1,10 +1,10 @@
 import { useState, useRef } from 'react'
-import type { GapFillStep } from '../../types'
+import type { GapFillStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
 
 interface Props {
   step: GapFillStep
-  onComplete: () => void
+  onComplete: (payload: StepAttemptPayload) => void
 }
 
 // Split sentence text on ___ into parts; render each gap as an input
@@ -117,7 +117,7 @@ export default function GapFillStepView({ step, onComplete }: Props) {
             ✓ {countCorrect()} / {totalGaps} correct
           </p>
           <button
-            onClick={onComplete}
+            onClick={() => onComplete({ answers: inputs, score: countCorrect() / totalGaps })}
             className="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl text-sm transition-colors"
           >
             Continue →

@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import type { WordBankStep } from '../../types'
+import type { WordBankStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
 
 interface Props {
   step: WordBankStep
-  onComplete: () => void
+  onComplete: (payload: StepAttemptPayload) => void
 }
 
 export default function WordBankStepView({ step, onComplete }: Props) {
@@ -97,7 +97,10 @@ export default function WordBankStepView({ step, onComplete }: Props) {
       ) : (
         <div className="space-y-2">
           <p className="text-sm text-green-700 font-medium">✓ {correct} / {step.questions.length} correct</p>
-          <button onClick={onComplete} className="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl text-sm transition-colors">
+          <button
+            onClick={() => onComplete({ answers: inputs, score: correct / step.questions.length })}
+            className="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl text-sm transition-colors"
+          >
             Continue →
           </button>
         </div>
