@@ -37,7 +37,16 @@ export interface WordBankItem {
 
 export interface NoticeItem {
   number: number
-  text: string        // excerpt shown in italics
+  text: string        // excerpt shown in italics (HTML-safe)
+  ipa?: string         // phonemic transcription shown under the text (HTML-safe)
+  // For interactive items (see NoticeListenStep.markUnit): indices of the
+  // correct click targets, 0-based over `text.split(/\s+/)`. In 'word' mode
+  // each index is a word; in 'gap' mode each index i is the gap between
+  // word i and word i+1 (i.e. a linking point).
+  markIndices?: number[]
+  // Shown solved, not clickable — teaches the student the mechanic before
+  // they try the rest of the items themselves.
+  isExample?: boolean
 }
 
 export interface BaseStep {
@@ -80,8 +89,13 @@ export interface NoticeListenStep extends BaseStep {
   kind: 'noticeListen'
   intro: string       // explanation paragraph
   items: NoticeItem[]
-  revealLabel?: string  // label on the reveal-answer button
-  revealContent?: string // content shown after reveal (e.g. underlined words)
+  revealLabel?: string  // label on the reveal-answer button (non-interactive steps only)
+  revealContent?: string // content shown after reveal (non-interactive steps only)
+  // Presence of this field switches the step into click-to-mark-then-check
+  // mode: 'word' — student clicks words (e.g. stressed syllables); 'gap' —
+  // student clicks the space between two words (e.g. linking points).
+  markUnit?: 'word' | 'gap'
+  checkLabel?: string  // label on the check-answers button; defaults to "Check answers"
 }
 
 export type Step =

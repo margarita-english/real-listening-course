@@ -161,12 +161,12 @@ export default function UnitPlayerPage() {
         </div>
 
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
-          {step.kind === 'info'         && <InfoCard               step={step} onComplete={advance} />}
-          {step.kind === 'mcq'          && <McqStepView            step={step} onComplete={advance} />}
-          {step.kind === 'gapFill'      && <GapFillStepView        step={step} onComplete={advance} />}
-          {step.kind === 'qa'           && <QaStepView             step={step} onComplete={advance} />}
-          {step.kind === 'wordBank'     && <WordBankStepView       step={step} onComplete={advance} />}
-          {step.kind === 'noticeListen' && <NoticeListenStepView   step={step} onComplete={advance} />}
+          {step.kind === 'info'         && <InfoCard               key={step.id} step={step} onComplete={advance} />}
+          {step.kind === 'mcq'          && <McqStepView            key={step.id} step={step} onComplete={advance} />}
+          {step.kind === 'gapFill'      && <GapFillStepView        key={step.id} step={step} onComplete={advance} />}
+          {step.kind === 'qa'           && <QaStepView             key={step.id} step={step} onComplete={advance} />}
+          {step.kind === 'wordBank'     && <WordBankStepView       key={step.id} step={step} onComplete={advance} />}
+          {step.kind === 'noticeListen' && <NoticeListenStepView   key={step.id} step={step} onComplete={advance} />}
         </div>
       </main>
     </div>

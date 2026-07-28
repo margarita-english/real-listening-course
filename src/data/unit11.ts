@@ -221,6 +221,27 @@ const unit11: Unit = {
     },
 
     {
+      id: '3a3',
+      kind: 'gapFill',
+      sectionLabel: '3. Interesting Language Points',
+      part: 'A  Practice: present simple vs present continuous',
+      instruction:
+        'Fill each gap with the correct form (present simple or present continuous) of the verb in brackets.',
+      questions: [
+        { number: 1,  text: 'Scott (work) ___ in finance, but this month he (work) ___ on a special project.',                  answers: ['works', 'is working'] },
+        { number: 2,  text: 'I usually (walk) ___ to the office, but this morning I (drive) ___ because it\'s raining.',        answers: ['walk', 'am driving'] },
+        { number: 3,  text: 'My sister (live) ___ in Paris, but right now she (stay) ___ with us for a few weeks.',             answers: ['lives', 'is staying'] },
+        { number: 4,  text: 'He (smoke) ___ less than before, but he (try) ___ to quit completely this year.',                  answers: ['smokes', 'is trying'] },
+        { number: 5,  text: 'We (meet) ___ every Friday for coffee, but this week we (meet) ___ on Monday instead.',            answers: ['meet', 'are meeting'] },
+        { number: 6,  text: 'She rarely (eat) ___ spicy food, but she (try) ___ a curry for the first time tonight.',           answers: ['eats', 'is trying'] },
+        { number: 7,  text: 'The train (leave) ___ at 9am every day, but today it (leave) ___ late because of the strike.',     answers: ['leaves', 'is leaving'] },
+        { number: 8,  text: 'I (study) ___ English twice a week, but this term I (study) ___ much harder for the exam.',        answers: ['study', 'am studying'] },
+        { number: 9,  text: 'They (eat) ___ meat occasionally, but right now they (eat) ___ only fish because it\'s Lent.',     answers: ['eat', 'are eating'] },
+        { number: 10, text: 'My father (drive) ___ to work every day, but this week he (take) ___ the train because his car is being repaired.', answers: ['drives', 'is taking'] },
+      ],
+    },
+
+    {
       id: '3b',
       kind: 'info',
       sectionLabel: '3. Interesting Language Points',
@@ -249,6 +270,27 @@ const unit11: Unit = {
         '\'We <u>were walking</u> home last night when suddenly it <u>started</u> to snow.\'',
         'When I first <u>got</u> to London, obviously I <u>was looking</u> for something a bit cheaper.',
         'Well, first you <u>were jogging</u> and things on the river. Now you\'re walking along canal banks...',
+      ],
+    },
+
+    {
+      id: '3b3',
+      kind: 'gapFill',
+      sectionLabel: '3. Interesting Language Points',
+      part: 'B  Practice: past simple vs past continuous',
+      instruction:
+        'Fill each gap with the correct form (past simple or past continuous) of the verb in brackets.',
+      questions: [
+        { number: 1,  text: 'While I (walk) ___ home, it (start) ___ to rain.',                                answers: ['was walking', 'started'] },
+        { number: 2,  text: 'She (cook) ___ dinner when the phone (ring) ___.',                                 answers: ['was cooking', 'rang'] },
+        { number: 3,  text: 'We (watch) ___ a film when the power (go) ___ out.',                               answers: ['were watching', 'went'] },
+        { number: 4,  text: 'He (drive) ___ to work when he (see) ___ the accident.',                           answers: ['was driving', 'saw'] },
+        { number: 5,  text: 'They (have) ___ dinner when someone (knock) ___ on the door.',                     answers: ['were having', 'knocked'] },
+        { number: 6,  text: 'I (sleep) ___ when someone (bang) ___ on the door at midnight.',                   answers: ['was sleeping', 'banged'] },
+        { number: 7,  text: 'Scott (live) ___ in Australia when he (decide) ___ to move to London.',            answers: ['was living', 'decided'] },
+        { number: 8,  text: 'She (walk) ___ to the station when she (realise) ___ she\'d forgotten her ticket.', answers: ['was walking', 'realised'] },
+        { number: 9,  text: 'We (talk) ___ about the trip when Maria (arrive) ___.',                            answers: ['were talking', 'arrived'] },
+        { number: 10, text: 'He (wait) ___ for the bus when it (begin) ___ to snow.',                           answers: ['was waiting', 'began'] },
       ],
     },
 
@@ -295,31 +337,22 @@ const unit11: Unit = {
       audioFile: 'unit11/185.mp3',
       audioLabel: 'Track 185',
       instruction:
-        'Stressed words are the most important in spoken English because they carry the most meaning. Which words do you think Scott stresses in the following extracts? Underline them. Then listen to check your answers.',
+        'Stressed words are the most important in spoken English because they carry the most meaning. Item 1 is done for you as an example. Click the words you think Scott stresses in the rest, then check your answers.',
       intro:
-        'Try to underline the stressed words in each sentence before listening. Then check against the answers below.',
-      revealLabel: 'Show stressed words',
-      revealContent: `1. It's certainly a term I wasn't <u>familiar</u> with until I came to <u>London</u>
-2. so my address is 96 <u>Elgin</u> <u>Mansions</u>
-3. Maida Vale is <u>full</u> of three or four-bed... three or <u>two</u>-bedroom <u>apartments</u>, basically.
-4. I live in a <u>three</u>-bedroom one.
-5. there's a <u>couple</u> in the <u>main</u> room
-6. we <u>share</u> the living room and we share <u>kitchen</u> and we share <u>bathroom</u>
-7. But er, when I first got to London obviously I was looking for something a bit <u>cheaper</u>, even then.
-8. I certainly <u>couldn't afford</u> to buy a house there.
-9. So yeah, it is quite a, quite an <u>affluent</u> area.
-10. I'm certainly doing <u>less</u> exercise than I was <u>two years ago</u>.`,
+        'Click each word you think is stressed. Then press Check answers to see how you did.',
+      markUnit: 'word',
+      checkLabel: 'Check answers',
       items: [
-        { number: 1,  text: 'It\'s certainly a term I wasn\'t familiar with until I came to London' },
-        { number: 2,  text: 'so my address is 96 Elgin Mansions' },
-        { number: 3,  text: 'Maida Vale is full of three or four-bed... three or two-bedroom apartments, basically.' },
-        { number: 4,  text: 'I live in a three-bedroom one.' },
-        { number: 5,  text: 'there\'s a couple in the main room' },
-        { number: 6,  text: 'we share the living room and we share kitchen and we share bathroom' },
-        { number: 7,  text: 'But er, when I first got to London obviously I was looking for something a bit cheaper, even then.' },
-        { number: 8,  text: 'I certainly couldn\'t afford to buy a house there.' },
-        { number: 9,  text: 'So yeah, it is quite a, quite an affluent area.' },
-        { number: 10, text: 'I\'m certainly doing less exercise than I was two years ago.' },
+        { number: 1,  text: 'It\'s certainly a term I wasn\'t familiar with until I came to London', markIndices: [6, 12], isExample: true },
+        { number: 2,  text: 'so my address is 96 Elgin Mansions', markIndices: [5, 6] },
+        { number: 3,  text: 'Maida Vale is full of three or four-bed... three or two-bedroom apartments, basically.', markIndices: [3, 10, 11] },
+        { number: 4,  text: 'I live in a three-bedroom one.', markIndices: [4] },
+        { number: 5,  text: 'there\'s a couple in the main room', markIndices: [2, 5] },
+        { number: 6,  text: 'we share the living room and we share kitchen and we share bathroom', markIndices: [1, 8, 12] },
+        { number: 7,  text: 'But er, when I first got to London obviously I was looking for something a bit cheaper, even then.', markIndices: [16] },
+        { number: 8,  text: 'I certainly couldn\'t afford to buy a house there.', markIndices: [2, 3] },
+        { number: 9,  text: 'So yeah, it is quite a, quite an affluent area.', markIndices: [8] },
+        { number: 10, text: 'I\'m certainly doing less exercise than I was two years ago.', markIndices: [3, 8, 9, 10] },
       ],
     },
 
@@ -335,9 +368,21 @@ const unit11: Unit = {
       intro:
         'The most common linking occurs between the letter <em>-s</em> at the end of a word when the next word begins with a vowel, as in these excerpts from the interview:',
       items: [
-        { number: 1, text: 'Everyone lives_in mansionettes.' },
-        { number: 2, text: 'every house looks_exactly the same' },
-        { number: 3, text: 'there\'s_a couple in the main room' },
+        {
+          number: 1,
+          text: 'Everyone <mark class="bg-amber-100 text-amber-800 rounded px-0.5">lives_in</mark> mansionettes.',
+          ipa: '/ˈɛvriwʌn ˈlɪv<mark class="bg-amber-100 text-amber-800 rounded px-0.5">z‿ɪn</mark> ˌmænʃəˈnɛts/',
+        },
+        {
+          number: 2,
+          text: 'every house <mark class="bg-amber-100 text-amber-800 rounded px-0.5">looks_exactly</mark> the same',
+          ipa: '/ˈɛvri haʊs ˈlʊk<mark class="bg-amber-100 text-amber-800 rounded px-0.5">s‿ɪɡ</mark>ˈzæktli ðə seɪm/',
+        },
+        {
+          number: 3,
+          text: '<mark class="bg-amber-100 text-amber-800 rounded px-0.5">there\'s_a</mark> couple in the main room',
+          ipa: '/ðeə<mark class="bg-amber-100 text-amber-800 rounded px-0.5">z‿ə</mark> ˈkʌpəl ɪn ðə meɪn ruːm/',
+        },
       ],
     },
 
@@ -349,21 +394,17 @@ const unit11: Unit = {
       audioFile: 'unit11/187.mp3',
       audioLabel: 'Track 187',
       instruction:
-        'However, linking also occurs with other sounds. Mark where linking occurs in these excerpts, then listen to check your answers.',
+        'However, linking also occurs with other sounds. Item 1 is done for you as an example. Click the gap between two words where you think they link together in the rest, then check your answers.',
       intro:
-        'Mark where linking occurs in the sentences below, then listen to check.',
-      revealLabel: 'Show linking marks',
-      revealContent: `1. I live_in Maida Vale, which is_not far from here_at Regent's Park and the_Academy...
-2. It's basically_a block_of um, apartments – two_or three-bedroom apartments – stacked_on top_of each_other.
-3. And they're_often referred to_as 'mansions'.
-4. So your_address is 96 Elgin Mansions...
-5. And it's_also close_to_an_area called Little Venice`,
+        'Click between two words to mark a linking point. Then press Check answers to see how you did.',
+      markUnit: 'gap',
+      checkLabel: 'Check answers',
       items: [
-        { number: 1, text: 'I live in Maida Vale, which is not far from here at Regent\'s Park and the Academy...' },
-        { number: 2, text: 'It\'s basically a block of um, apartments – two or three-bedroom apartments – stacked on top of each other.' },
-        { number: 3, text: 'And they\'re often referred to as \'mansions\'.' },
-        { number: 4, text: 'So your address is 96 Elgin Mansions...' },
-        { number: 5, text: 'And it\'s also close to an area called Little Venice' },
+        { number: 1, text: 'I live in Maida Vale, which is not far from here at Regent\'s Park and the Academy...', markIndices: [1, 6, 10, 15], isExample: true },
+        { number: 2, text: 'It\'s basically a block of um, apartments – two or three-bedroom apartments – stacked on top of each other.', markIndices: [1, 3, 8, 13, 15, 17] },
+        { number: 3, text: 'And they\'re often referred to as \'mansions\'.', markIndices: [1, 4] },
+        { number: 4, text: 'So your address is 96 Elgin Mansions...', markIndices: [1] },
+        { number: 5, text: 'And it\'s also close to an area called Little Venice', markIndices: [1, 3, 4, 5] },
       ],
     },
 
@@ -444,7 +485,7 @@ const unit11: Unit = {
       part: 'C  Colloquial English',
       instruction:
         'Scott uses lots of colloquial English words and phrases in his interview. Colloquial English is found in informal spoken and written English, for example, when friends chat or write emails. Try to fit the words in the box into the sentences below. Two of the words are used twice.',
-      bank: ['afford', 'age', 'at', 'bit', 'fun', 'lucky', 'most', 'much', 'same', 'stage', 'while'],
+      bank: ['afford', 'afford', 'age', 'at', 'bit', 'bit', 'fun', 'lucky', 'most', 'much', 'same', 'stage', 'while'],
       questions: [
         { number: 1,  text: 'I can\'t really ___ that much. Have you got anything a ___ cheaper?',                            answer: 'afford / bit' },
         { number: 2,  text: 'We\'re very ___ because our flat is walking distance from where we work.',                       answer: 'lucky' },

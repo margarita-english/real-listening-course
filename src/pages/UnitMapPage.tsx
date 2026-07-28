@@ -33,6 +33,13 @@ export default function UnitMapPage() {
   const [attempts, setAttempts] = useState<Record<string, Attempt>>({})
   const [loaded, setLoaded] = useState(false)
   const [openStepId, setOpenStepId] = useState<string | null>(null)
+  const [isTeacher, setIsTeacher] = useState(false)
+
+  useEffect(() => {
+    if (!user) return
+    supabase.from('profiles').select('role').eq('id', user.id).single()
+      .then(({ data }) => { if (data?.role === 'teacher') setIsTeacher(true) })
+  }, [user])
 
   useEffect(() => {
     if (!user || !slug) return
@@ -81,20 +88,18 @@ export default function UnitMapPage() {
     section.steps.push({ step, index })
   })
 
+  // Teachers previewing the course aren't gated by their own progress —
+  // every section is open so they can see exactly what students will see.
   function nodeStatus(index: number): 'done' | 'current' | 'locked' {
     if (unlockedIndex === -1 || index < unlockedIndex) return 'done'
     if (index === unlockedIndex) return 'current'
-    return 'locked'
+    return isTeacher ? 'current' : 'locked'
   }
 
-  function handleNodeClick(stepId: string, index: number) {
+  function handleNodeClick(index: number) {
     const status = nodeStatus(index)
     if (status === 'locked') return
-    if (status === 'current') {
-      navigate(`/unit/${slug}/play?step=${index}`)
-      return
-    }
-    setOpenStepId(openStepId === stepId ? null : stepId)
+    navigate(`/unit/${slug}/play?step=${index}`)
   }
 
   return (
@@ -140,29 +145,39 @@ export default function UnitMapPage() {
                     const status = nodeStatus(index)
                     const attempt = attempts[step.id]
                     return (
-                      <button
-                        key={step.id}
-                        onClick={() => handleNodeClick(step.id, index)}
-                        disabled={status === 'locked'}
-                        title={status === 'locked' ? 'Complete previous tasks first' : step.part}
-                        className={[
-                          'w-16 h-16 rounded-2xl flex flex-col items-center justify-center gap-0.5 border-2 transition-colors shrink-0',
-                          status === 'done' && 'bg-green-50 border-green-400 text-green-700 hover:bg-green-100 cursor-pointer',
-                          status === 'current' && 'bg-teal-600 border-teal-600 text-white shadow-md cursor-pointer animate-pulse',
-                          status === 'locked' && 'bg-slate-100 border-slate-200 text-slate-300 cursor-not-allowed',
-                        ].filter(Boolean).join(' ')}
-                      >
-                        {status === 'locked' ? (
-                          <span className="text-lg">🔒</span>
-                        ) : (
-                          <span className="text-lg">{KIND_ICON[step.kind] ?? '•'}</span>
+                      <div key={step.id} className="relative shrink-0">
+                        <button
+                          onClick={() => handleNodeClick(index)}
+                          disabled={status === 'locked'}
+                          title={status === 'locked' ? 'Complete previous tasks first' : step.part}
+                          className={[
+                            'w-16 h-16 rounded-2xl flex flex-col items-center justify-center gap-0.5 border-2 transition-colors',
+                            status === 'done' && 'bg-green-50 border-green-400 text-green-700 hover:bg-green-100 cursor-pointer',
+                            status === 'current' && 'bg-teal-600 border-teal-600 text-white shadow-md cursor-pointer animate-pulse',
+                            status === 'locked' && 'bg-slate-100 border-slate-200 text-slate-300 cursor-not-allowed',
+                          ].filter(Boolean).join(' ')}
+                        >
+                          {status === 'locked' ? (
+                            <span className="text-lg">🔒</span>
+                          ) : (
+                            <span className="text-lg">{KIND_ICON[step.kind] ?? '•'}</span>
+                          )}
+                          <span className="text-[10px] font-semibold">
+                            {status === 'done'
+                              ? (attempt?.score !== null && attempt?.score !== undefined ? `${Math.round(attempt.score * 100)}%` : '✓')
+                              : `#${index + 1}`}
+                          </span>
+                        </button>
+                        {status === 'done' && (
+                          <button
+                            onClick={(e) => { e.stopPropagation(); setOpenStepId(openStepId === step.id ? null : step.id) }}
+                            title="Review your submitted answers"
+                            className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-white border border-slate-300 rounded-full text-[10px] leading-none flex items-center justify-center hover:bg-slate-50 shadow-sm"
+                          >
+                            👁
+                          </button>
                         )}
-                        <span className="text-[10px] font-semibold">
-                          {status === 'done'
-                            ? (attempt?.score !== null && attempt?.score !== undefined ? `${Math.round(attempt.score * 100)}%` : '✓')
-                            : `#${index + 1}`}
-                        </span>
-                      </button>
+                      </div>
                     )
                   })}
                 </div>
