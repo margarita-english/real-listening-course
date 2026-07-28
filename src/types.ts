@@ -62,6 +62,9 @@ export interface InfoStep extends BaseStep {
   kind: 'info'
   body: string[]  // paragraphs / bullet points (HTML-safe strings)
   excerpts?: string[]
+  // Small inline play buttons, e.g. one per pronunciation example — distinct
+  // from the single top-of-step AudioPlayer driven by BaseStep.audioFile.
+  audioExamples?: { label: string; audioFile: string }[]
 }
 
 export interface McqStep extends BaseStep {

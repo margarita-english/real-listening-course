@@ -1,5 +1,6 @@
 import type { InfoStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
+import MiniAudioButton from '../MiniAudioButton'
 
 interface Props {
   step: InfoStep
@@ -33,6 +34,14 @@ export default function InfoCard({ step, onComplete }: Props) {
               className="text-slate-600 text-sm italic leading-relaxed"
               dangerouslySetInnerHTML={{ __html: ex }}
             />
+          ))}
+        </div>
+      )}
+
+      {step.audioExamples && step.audioExamples.length > 0 && (
+        <div className="flex flex-wrap gap-2 my-3">
+          {step.audioExamples.map((ex, i) => (
+            <MiniAudioButton key={i} src={`/audio/${ex.audioFile}`} label={ex.label} />
           ))}
         </div>
       )}
