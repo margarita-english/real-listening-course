@@ -42,12 +42,14 @@ Full product spec: `~/Desktop/AI Projects/Listening Course Platform/more-english
 - **Test:** build passes ✓; login → home → unit → steps → transcript/glossary all navigate correctly
 - **Commit:** Stage 2 — Unit 11 full digitised unit
 
-## ⬜ Stage 3 — Levels, modules & navigation
-- [ ] 3 levels (Easy/Medium/Difficult), 1 module each
-- [ ] Browse level → module → exercise
-- [ ] Student progress as % (module + level), first-attempt rate
-- **Test:** navigate the full structure as a student
-- **Commit:** navigation + progress
+## 🟡 Stage 3 — Levels & navigation (in progress)
+- [x] 3 levels (Elementary/Intermediate/Advanced) — home page groups units by level via `src/data/units.ts`
+- [x] Unit 11 (Scott) = Advanced; **Unit 1 "Jackie" digitised = Elementary** (22 steps, 30 tracks, from "Real Listening — Elementary")
+- [ ] Intermediate level — no unit yet
+- [ ] Modules within a level (currently each level is just a flat list of units)
+- [ ] First-attempt rate in progress tracking (currently just % complete)
+- **Test:** ✓ navigated the full Unit 1 structure as a student; home page correctly groups by level
+- **Commit:** ✓ "Add level differentiation... and Unit 1 Jackie"
 
 ## ⬜ Stage 4 — Teacher dashboard
 - [ ] Teacher sees all students' progress (%, first-attempt, weak features)
@@ -67,5 +69,8 @@ Full product spec: `~/Desktop/AI Projects/Listening Course Platform/more-english
 ## Later (not now)
 - Vocabulary & grammar exercises (matching, gap-fill, MCQ, flashcards)
 - Richer analytics (group weak-spot analysis)
-- Content admin panel (so Margarita adds audio without a developer)
 - Phonemic (IPA) auto-generation; spaced repetition
+
+## Done, not originally staged
+- ✅ Content admin panel — teacher can edit exercise instruction text + info-card
+  paragraphs at `/admin/content/:slug` without a developer (`step_overrides` table)
