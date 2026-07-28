@@ -2,12 +2,14 @@ import { useRef, useState } from 'react'
 
 interface Props {
   src: string
-  label: string
+  written: string
+  ipa: string
 }
 
-// A compact play button for a single short example clip — no seek bar or
-// speed control, unlike the full AudioPlayer used for track-length audio.
-export default function MiniAudioButton({ src, label }: Props) {
+// A compact play button for a single short example clip — shows the word as
+// normally spelled plus its phonemic script, no seek bar or speed control
+// (unlike the full AudioPlayer used for track-length audio).
+export default function MiniAudioButton({ src, written, ipa }: Props) {
   const ref = useRef<HTMLAudioElement>(null)
   const [playing, setPlaying] = useState(false)
   const [missing, setMissing] = useState(false)
@@ -24,7 +26,7 @@ export default function MiniAudioButton({ src, label }: Props) {
       onClick={toggle}
       disabled={missing}
       className={[
-        'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-sm font-medium transition-colors',
+        'inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm font-medium transition-colors',
         missing
           ? 'border-amber-200 text-amber-500 cursor-not-allowed'
           : 'border-teal-300 text-teal-700 hover:bg-teal-50',
@@ -37,7 +39,8 @@ export default function MiniAudioButton({ src, label }: Props) {
         onError={() => setMissing(true)}
       />
       <span>{missing ? '🎵' : playing ? '⏸' : '▶'}</span>
-      {label}
+      <span>{written}</span>
+      <span className="font-mono text-teal-600">{ipa}</span>
     </button>
   )
 }

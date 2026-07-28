@@ -38,10 +38,40 @@ export default function InfoCard({ step, onComplete }: Props) {
         </div>
       )}
 
-      {step.audioExamples && step.audioExamples.length > 0 && (
-        <div className="flex flex-wrap gap-2 my-3">
-          {step.audioExamples.map((ex, i) => (
-            <MiniAudioButton key={i} src={`/audio/${ex.audioFile}`} label={ex.label} />
+      {step.sections && step.sections.length > 0 && (
+        <div className="space-y-5">
+          {step.sections.map((section, si) => (
+            <div key={si} className="border border-slate-200 rounded-xl p-4 space-y-2.5">
+              <h3 className="font-bold text-slate-900 text-sm">{section.heading}</h3>
+
+              {section.body.map((line, i) => (
+                <p
+                  key={i}
+                  className="text-slate-600 text-sm leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: line }}
+                />
+              ))}
+
+              {section.examples && section.examples.length > 0 && (
+                <div className="pl-4 border-l-4 border-teal-300 space-y-1.5">
+                  {section.examples.map((ex, i) => (
+                    <p
+                      key={i}
+                      className="text-slate-600 text-sm italic leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: ex }}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {section.audioExamples && section.audioExamples.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {section.audioExamples.map((ex, i) => (
+                    <MiniAudioButton key={i} src={`/audio/${ex.audioFile}`} written={ex.written} ipa={ex.ipa} />
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       )}

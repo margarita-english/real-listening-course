@@ -400,11 +400,11 @@ const unit11: Unit = {
       markUnit: 'gap',
       checkLabel: 'Check answers',
       items: [
-        { number: 1, text: 'I live in Maida Vale, which is not far from here at Regent\'s Park and the Academy...', markIndices: [1, 6, 10, 15], isExample: true },
-        { number: 2, text: 'It\'s basically a block of um, apartments – two or three-bedroom apartments – stacked on top of each other.', markIndices: [1, 3, 8, 13, 15, 17] },
-        { number: 3, text: 'And they\'re often referred to as \'mansions\'.', markIndices: [1, 4] },
+        { number: 1, text: 'I live in Maida Vale, which is not far from here at Regent\'s Park and the Academy...', markIndices: [1, 5, 13], isExample: true },
+        { number: 2, text: 'It\'s basically a block of um, apartments, two or three-bedroom apartments, stacked on top of each other.', markIndices: [3, 10, 11, 13, 15] },
+        { number: 3, text: 'And they\'re often referred to as \'mansions\'.', markIndices: [0, 1, 3] },
         { number: 4, text: 'So your address is 96 Elgin Mansions...', markIndices: [1] },
-        { number: 5, text: 'And it\'s also close to an area called Little Venice', markIndices: [1, 3, 4, 5] },
+        { number: 5, text: 'And it\'s also close to an area called Little Venice', markIndices: [1, 5] },
       ],
     },
 
@@ -413,23 +413,32 @@ const unit11: Unit = {
       kind: 'info',
       sectionLabel: '4. Further Listening Practice',
       part: 'C  Features of spoken English: elision and the glottal stop',
-      instruction: 'Before you try the gap-fill, here are two features of connected speech you\'ll hear in the excerpts.',
-      body: [
-        '<strong>Elision</strong> — a sound is dropped altogether to make the language easier and faster to say. Tap each example to hear it:',
-      ],
-      audioExamples: [
-        { label: 'I don\'t know → I duno', audioFile: 'unit11/elision-dont-know.m4a' },
-        { label: 'camera → kamra', audioFile: 'unit11/elision-camera.m4a' },
-        { label: 'fish and chips → fish \'n\' chips', audioFile: 'unit11/elision-fish-and-chips.m4a' },
-      ],
-      excerpts: [
-        '<strong>The glottal stop</strong> — often used in standard GB English (like Scott\'s) when /t/ ends a syllable and the next sound is a consonant, replacing the /t/ with a small catch in the throat:',
-        'righ<span class="text-red-600 font-semibold">t</span>ly &nbsp; wi<span class="text-red-600 font-semibold">t</span>ness &nbsp; Sco<span class="text-red-600 font-semibold">t</span>land &nbsp; Bri<span class="text-red-600 font-semibold">t</span>pop &nbsp; hi<span class="text-red-600 font-semibold">t</span>man',
-        'This happens between words too:',
-        'i<span class="text-red-600 font-semibold">t</span> was &nbsp; tha<span class="text-red-600 font-semibold">t</span> thing &nbsp; ca<span class="text-red-600 font-semibold">t</span> flap &nbsp; righ<span class="text-red-600 font-semibold">t</span> side &nbsp; sho<span class="text-red-600 font-semibold">t</span> stopper',
-        'GB speakers may also do this with /p/ and /k/ when the next sound is made in the same part of the mouth:',
-        'sto<span class="text-red-600 font-semibold">p</span> me &nbsp; ba<span class="text-red-600 font-semibold">ck</span>ground &nbsp; to<span class="text-red-600 font-semibold">p</span> buy',
-        'In very clear, slow speech, the glottal stop might not be used at all — so don\'t expect to hear it every time.',
+      instruction: 'Before you try the gap-fill, here are two distinct features of connected speech you\'ll hear in the excerpts.',
+      body: [],
+      sections: [
+        {
+          heading: 'Elision',
+          body: [
+            'A sound is dropped altogether to make the language easier and faster to say. Tap each example to hear it — the word as it\'s written, then how it actually sounds:',
+          ],
+          audioExamples: [
+            { written: 'I don\'t know', ipa: '/aɪ dəˈnəʊ/', audioFile: 'unit11/elision-dont-know.m4a' },
+            { written: 'camera', ipa: '/ˈkæmrə/', audioFile: 'unit11/elision-camera.m4a' },
+            { written: 'fish and chips', ipa: '/ˈfɪʃ ən ˈtʃɪps/', audioFile: 'unit11/elision-fish-and-chips.m4a' },
+          ],
+        },
+        {
+          heading: 'The glottal stop',
+          body: [
+            'Often used in standard GB English (like Scott\'s) when /t/ ends a syllable and the next sound is a consonant, replacing the /t/ with a small catch in the throat:',
+            '<span class="italic">righ<span class="text-red-600 font-semibold">t</span>ly &nbsp; wi<span class="text-red-600 font-semibold">t</span>ness &nbsp; Sco<span class="text-red-600 font-semibold">t</span>land &nbsp; Bri<span class="text-red-600 font-semibold">t</span>pop &nbsp; hi<span class="text-red-600 font-semibold">t</span>man</span>',
+            'This happens between words too:',
+            '<span class="italic">i<span class="text-red-600 font-semibold">t</span> was &nbsp; tha<span class="text-red-600 font-semibold">t</span> thing &nbsp; ca<span class="text-red-600 font-semibold">t</span> flap &nbsp; righ<span class="text-red-600 font-semibold">t</span> side &nbsp; sho<span class="text-red-600 font-semibold">t</span> stopper</span>',
+            'GB speakers may also do this with /p/ and /k/ when the next sound is made in the same part of the mouth:',
+            '<span class="italic">sto<span class="text-red-600 font-semibold">p</span> me &nbsp; ba<span class="text-red-600 font-semibold">ck</span>ground &nbsp; to<span class="text-red-600 font-semibold">p</span> buy</span>',
+            'In very clear, slow speech, the glottal stop might not be used at all — so don\'t expect to hear it every time.',
+          ],
+        },
       ],
     },
 

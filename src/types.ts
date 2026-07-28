@@ -58,13 +58,30 @@ export interface BaseStep {
   audioLabel?: string   // e.g. "Track 176"
 }
 
+// Word/phrase shown as normally spelled, its phonemic script, and a
+// tap-to-play clip — used for pronunciation examples like elision.
+export interface AudioExample {
+  written: string
+  ipa: string       // e.g. "/aɪ dʌnoʊ/"
+  audioFile: string
+}
+
+// A distinct, separately-headed sub-topic within an info step — e.g. an
+// info step introducing two unrelated features must render them as two
+// clearly separate blocks, not interleaved.
+export interface InfoSection {
+  heading: string
+  body: string[]        // paragraphs (HTML-safe strings)
+  examples?: string[]   // plain example list, shown in a bordered box
+  audioExamples?: AudioExample[]
+}
+
 export interface InfoStep extends BaseStep {
   kind: 'info'
   body: string[]  // paragraphs / bullet points (HTML-safe strings)
   excerpts?: string[]
-  // Small inline play buttons, e.g. one per pronunciation example — distinct
-  // from the single top-of-step AudioPlayer driven by BaseStep.audioFile.
-  audioExamples?: { label: string; audioFile: string }[]
+  // Ordered sub-topics, each rendered as its own labeled block, in order.
+  sections?: InfoSection[]
 }
 
 export interface McqStep extends BaseStep {
