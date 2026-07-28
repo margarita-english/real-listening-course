@@ -7,6 +7,7 @@ import UnitMapPage from './pages/UnitMapPage'
 import UnitPlayerPage from './pages/UnitPlayerPage'
 import ReferencePage from './pages/ReferencePage'
 import AdminPage from './pages/AdminPage'
+import AdminContentPage from './pages/AdminContentPage'
 
 function RequireAuth({ children }: { children: React.ReactNode }) {
   const { session, loading } = useAuth()
@@ -23,6 +24,7 @@ function AppRoutes() {
       <Route path="/reset-password" element={<ResetPasswordPage />} />
       <Route path="/" element={<RequireAuth><HomePage /></RequireAuth>} />
       <Route path="/admin" element={<RequireAuth><AdminPage /></RequireAuth>} />
+      <Route path="/admin/content/:slug" element={<RequireAuth><AdminContentPage /></RequireAuth>} />
       <Route path="/unit/:slug" element={<RequireAuth><UnitMapPage /></RequireAuth>} />
       <Route path="/unit/:slug/play" element={<RequireAuth><UnitPlayerPage /></RequireAuth>} />
       <Route path="/unit/:slug/reference" element={<RequireAuth><ReferencePage /></RequireAuth>} />

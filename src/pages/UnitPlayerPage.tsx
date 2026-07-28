@@ -4,6 +4,7 @@ import unit11 from '../data/unit11'
 import type { StepAttemptPayload, Unit } from '../types'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
+import { applyStepOverrides, fetchStepOverrides, type StepOverrideMap } from '../lib/stepOverrides'
 import InfoCard from '../components/steps/InfoCard'
 import McqStepView from '../components/steps/McqStepView'
 import GapFillStepView from '../components/steps/GapFillStepView'
@@ -25,6 +26,12 @@ export default function UnitPlayerPage() {
 
   const [stepIndex, setStepIndex] = useState(0)
   const [finished, setFinished] = useState(false)
+  const [overrides, setOverrides] = useState<StepOverrideMap>({})
+
+  useEffect(() => {
+    if (!slug) return
+    fetchStepOverrides(slug).then(setOverrides)
+  }, [slug])
 
   // A specific step requested from the unit map takes priority; otherwise
   // resume wherever this device last left off.
@@ -113,7 +120,8 @@ export default function UnitPlayerPage() {
     )
   }
 
-  const step = unit.steps[stepIndex]
+  const displayUnit = applyStepOverrides(unit, overrides)
+  const step = displayUnit.steps[stepIndex]
   const progress = Math.round(((stepIndex) / unit.steps.length) * 100)
 
   return (

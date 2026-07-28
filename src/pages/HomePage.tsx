@@ -51,9 +51,14 @@ export default function HomePage() {
         </div>
         <div className="flex items-center gap-3">
           {isTeacher && (
-            <Link to="/admin" className="text-xs text-teal-600 hover:text-teal-800 font-medium">
-              👩‍🏫 Students
-            </Link>
+            <>
+              <Link to="/admin" className="text-xs text-teal-600 hover:text-teal-800 font-medium">
+                👩‍🏫 Students
+              </Link>
+              <Link to="/admin/content/unit11-scott" className="text-xs text-teal-600 hover:text-teal-800 font-medium">
+                ✏️ Edit texts
+              </Link>
+            </>
           )}
           <button onClick={signOut} className="text-xs text-slate-400 hover:text-slate-600">Sign out</button>
         </div>
