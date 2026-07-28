@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
-import unit11 from '../data/unit11'
-import type { StepAttemptPayload, Unit } from '../types'
+import type { StepAttemptPayload } from '../types'
+import { UNITS } from '../data/units'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
 import { applyStepOverrides, fetchStepOverrides, type StepOverrideMap } from '../lib/stepOverrides'
@@ -11,10 +11,6 @@ import GapFillStepView from '../components/steps/GapFillStepView'
 import QaStepView from '../components/steps/QaStepView'
 import WordBankStepView from '../components/steps/WordBankStepView'
 import NoticeListenStepView from '../components/steps/NoticeListenStepView'
-
-const UNITS: Record<string, Unit> = {
-  'unit11-scott': unit11,
-}
 
 const STORAGE_KEY = (slug: string) => `progress:${slug}`
 

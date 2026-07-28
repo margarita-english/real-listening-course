@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import unit11 from '../data/unit11'
-import type { Unit } from '../types'
+import { UNITS } from '../data/units'
 import ExerciseReview from '../components/ExerciseReview'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
-
-const UNITS: Record<string, Unit> = { 'unit11-scott': unit11 }
 
 interface Attempt {
   step_id: string

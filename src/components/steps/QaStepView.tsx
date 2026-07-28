@@ -32,6 +32,11 @@ export default function QaStepView({ step, onComplete }: Props) {
             <p className="text-sm font-medium text-slate-800 mb-1">
               {q.number}.&nbsp;{q.question}
             </p>
+            {q.audioFile && (
+              <div className="mb-2">
+                <AudioPlayer src={`/audio/${q.audioFile}`} label={q.audioLabel} />
+              </div>
+            )}
             {!submitted ? (
               <textarea
                 rows={2}

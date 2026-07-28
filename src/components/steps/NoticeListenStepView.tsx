@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import type { NoticeItem, NoticeListenStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
 
@@ -9,6 +9,36 @@ interface Props {
 
 function tokenize(text: string) {
   return text.split(/\s+/)
+}
+
+// Small icon-only play button for a per-item clip — the item's text is
+// already shown separately, so no label is needed here.
+function ItemPlayButton({ src }: { src: string }) {
+  const ref = useRef<HTMLAudioElement>(null)
+  const [playing, setPlaying] = useState(false)
+  const [missing, setMissing] = useState(false)
+
+  function toggle() {
+    const el = ref.current
+    if (!el || missing) return
+    if (playing) { el.pause(); setPlaying(false) }
+    else { el.currentTime = 0; el.play().catch(() => setMissing(true)); setPlaying(true) }
+  }
+
+  return (
+    <button
+      onClick={toggle}
+      disabled={missing}
+      title={missing ? 'Audio not available' : 'Play'}
+      className={[
+        'w-6 h-6 shrink-0 rounded-full border flex items-center justify-center text-xs transition-colors',
+        missing ? 'border-amber-200 text-amber-400 cursor-not-allowed' : 'border-teal-300 text-teal-700 hover:bg-teal-50',
+      ].join(' ')}
+    >
+      <audio ref={ref} src={src} onEnded={() => setPlaying(false)} onError={() => setMissing(true)} />
+      {missing ? '🎵' : playing ? '⏸' : '▶'}
+    </button>
+  )
 }
 
 // Static, already-solved rendering used for `isExample` items — teaches the
@@ -160,6 +190,7 @@ export default function NoticeListenStepView({ step, onComplete }: Props) {
         {step.items.map(item => (
           <li key={item.number} className="flex gap-2 text-sm text-slate-800">
             <span className="shrink-0 font-medium text-slate-500 w-5 text-right">{item.number}.</span>
+            {item.audioFile && <ItemPlayButton src={`/audio/${item.audioFile}`} />}
             <div className="flex-1">
               {item.isExample && (
                 <span className="inline-block text-[10px] font-semibold uppercase tracking-wide text-slate-400 bg-slate-100 rounded-full px-2 py-0.5 mb-1">

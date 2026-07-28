@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import unit11 from '../data/unit11'
-import type { Step, Unit } from '../types'
+import type { Step } from '../types'
+import { UNITS } from '../data/units'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
 import { fetchStepOverrides, saveStepOverride, type StepOverrideMap } from '../lib/stepOverrides'
-
-const UNITS: Record<string, Unit> = {
-  'unit11-scott': unit11,
-}
 
 function bodyToText(body: string[]) {
   return body.join('\n\n')

@@ -26,8 +26,6 @@ export default function McqStepView({ step, onComplete }: Props) {
           <p className="text-sm font-medium text-slate-800">
             {q.number}.&nbsp;
             <span dangerouslySetInnerHTML={{ __html: q.stem }} />
-            {/* If stem doesn't mention "largest nation" append trailing text */}
-            {q.number === 1 ? ' largest nation in the world.' : ''}
           </p>
           <div className="flex flex-wrap gap-2">
             {q.options.map(opt => {

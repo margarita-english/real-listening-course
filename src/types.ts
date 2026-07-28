@@ -27,6 +27,10 @@ export interface QaQuestion {
   // Omit for open-ended/opinion questions that have no single correct
   // answer — those are just saved, not graded.
   modelAnswer?: string
+  // Per-question clip, e.g. one short dictation excerpt per item, distinct
+  // from the single step-level BaseStep.audioFile.
+  audioFile?: string
+  audioLabel?: string
 }
 
 export interface WordBankItem {
@@ -39,6 +43,10 @@ export interface NoticeItem {
   number: number
   text: string        // excerpt shown in italics (HTML-safe)
   ipa?: string         // phonemic transcription shown under the text (HTML-safe)
+  // Per-item clip, e.g. one short clip per stress example, distinct from
+  // the single step-level BaseStep.audioFile.
+  audioFile?: string
+  audioLabel?: string
   // For interactive items (see NoticeListenStep.markUnit): indices of the
   // correct click targets, 0-based over `text.split(/\s+/)`. In 'word' mode
   // each index is a word; in 'gap' mode each index i is the gap between
@@ -130,6 +138,7 @@ export interface Unit {
   slug: string
   title: string
   subtitle: string
+  intervieweeName: string  // e.g. "Scott" — used for the transcript speaker legend
   steps: Step[]
   transcript: TranscriptLine[]
   transcriptAudioFile?: string

@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import unit11 from '../data/unit11'
-import type { Unit } from '../types'
+import { UNITS } from '../data/units'
 import AudioPlayer from '../components/AudioPlayer'
 import ExerciseReview from '../components/ExerciseReview'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
-
-const UNITS: Record<string, Unit> = { 'unit11-scott': unit11 }
 
 interface Attempt {
   step_id: string
@@ -141,7 +138,7 @@ export default function ReferencePage() {
                 <AudioPlayer src={`/audio/${unit.transcriptAudioFile}`} label="Full transcript" />
               )}
               <p className="text-xs text-slate-500">
-                <strong>I</strong> = Interviewer &nbsp;|&nbsp; <strong>S</strong> = Scott
+                <strong>I</strong> = Interviewer &nbsp;|&nbsp; <strong>S</strong> = {unit.intervieweeName}
               </p>
             </div>
             {unit.transcript.map((line, i) => (
