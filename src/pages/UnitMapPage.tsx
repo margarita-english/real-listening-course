@@ -19,6 +19,7 @@ const KIND_ICON: Record<string, string> = {
   qa: '💬',
   wordBank: '🔤',
   noticeListen: '👂',
+  discriminationGrid: '🎧',
 }
 
 export default function UnitMapPage() {

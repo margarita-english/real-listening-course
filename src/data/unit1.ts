@@ -1,13 +1,10 @@
 import type { Unit } from '../types'
 
-// Digitised from "Real Listening — Elementary", Unit 1 "Jackie" (My Family).
-// A few exercises in the printed book have no answer key at all — they're
-// designed to be self-corrected by ear while listening, or checked with a
-// teacher (section 1, 4B, 4D's practice items, 4H, 4I). Those are built as
-// listen-and-notice / open-response, not auto-graded, rather than guessing
-// at a key that doesn't exist. Sections 5C/5D/5E are generic grammar drills
-// not grounded in the transcript — their answers are my own best-effort,
-// standard-English fills, not from a printed key; worth spot-checking.
+// Digitised from "Real Listening — Elementary", Unit 1 "Jackie" (My Family),
+// cross-checked against the official HarperCollins teacher's-notes answer
+// key (all sections now graded from that key, not guessed). Only 4A and 4G
+// ("listen and repeat" pronunciation drills) have no check — there's
+// nothing to grade, the book itself just asks students to imitate.
 const unit1: Unit = {
   slug: 'unit1-jackie',
   title: 'Unit 1 — Jackie',
@@ -21,15 +18,17 @@ const unit1: Unit = {
       sectionLabel: '1. Pre-Listening Comprehension',
       part: 'Normalisation — sentence stress',
       instruction:
-        'Jackie comes from Cardiff in South Wales, but she now lives in Cornwall in south-west England. Her accent is a mix of South Welsh and Cornish. This exercise is designed to help you get used to Jackie\'s voice. Listen and underline the stressed words in each excerpt.',
-      intro: 'Play each clip and notice which words Jackie stresses.',
+        'Jackie comes from Cardiff in South Wales, but she now lives in Cornwall in south-west England. Her accent is a mix of South Welsh and Cornish. This exercise is designed to help you get used to Jackie\'s voice. Item 1 is done for you as an example. Click the words you think Jackie stresses in the rest, then check your answers.',
+      intro: 'Click each word you think is stressed. Then press Check answers to see how you did.',
+      markUnit: 'word',
+      checkLabel: 'Check answers',
       items: [
-        { number: 1, text: 'I\'ve still got a dad that lives in Cardiff.', audioFile: 'unit1/002.mp3' },
-        { number: 2, text: 'she\'s been in hospital as well', audioFile: 'unit1/003.mp3' },
-        { number: 3, text: 'don\'t see them as often as we\'d like', audioFile: 'unit1/004.mp3' },
-        { number: 4, text: 'We\'ve got quite a nice life.', audioFile: 'unit1/005.mp3' },
-        { number: 5, text: 'We can travel a bit.', audioFile: 'unit1/006.mp3' },
-        { number: 6, text: 'She\'s been out there for 30 years...', audioFile: 'unit1/007.mp3' },
+        { number: 1, text: 'I\'ve still got a dad that lives in Cardiff.', audioFile: 'unit1/002.mp3', markIndices: [4, 8], isExample: true },
+        { number: 2, text: 'she\'s been in hospital as well', audioFile: 'unit1/003.mp3', markIndices: [0, 5] },
+        { number: 3, text: 'don\'t see them as often as we\'d like', audioFile: 'unit1/004.mp3', markIndices: [7] },
+        { number: 4, text: 'We\'ve got quite a nice life.', audioFile: 'unit1/005.mp3', markIndices: [5] },
+        { number: 5, text: 'We can travel a bit.', audioFile: 'unit1/006.mp3', markIndices: [2] },
+        { number: 6, text: 'She\'s been out there for 30 years...', audioFile: 'unit1/007.mp3', markIndices: [5] },
       ],
     },
 
@@ -154,21 +153,19 @@ const unit1: Unit = {
     },
     {
       id: '4b',
-      kind: 'noticeListen',
+      kind: 'discriminationGrid',
       sectionLabel: '4. Further Listening Practice',
       part: 'B  Discriminating between minimal pairs of sounds 1',
       audioFile: 'unit1/011.mp3',
       audioLabel: 'Track 11',
-      instruction:
-        'In the book this is a tick-the-box grid: each pair is repeated 5 times in a random order and you tick which word you hear each time. Do this on paper or with your teacher while you listen — there\'s no single correct sequence to check here.',
-      intro: 'The pairs:',
-      items: [
-        { number: 1, text: 'live / leave' },
-        { number: 2, text: 'still / steal' },
-        { number: 3, text: 'look / Luke' },
-        { number: 4, text: 'been / bin' },
-        { number: 5, text: 'hip / heap' },
-        { number: 6, text: 'side / site' },
+      instruction: 'Each pair is repeated 5 times in a random order. Click which word you hear each time.',
+      pairs: [
+        { number: 1, wordA: 'live', wordB: 'leave', sequence: ['A', 'B', 'B', 'A', 'B'] },
+        { number: 2, wordA: 'still', wordB: 'steal', sequence: ['B', 'A', 'B', 'A', 'A'] },
+        { number: 3, wordA: 'look', wordB: 'Luke', sequence: ['B', 'B', 'A', 'B', 'A'] },
+        { number: 4, wordA: 'been', wordB: 'bin', sequence: ['A', 'B', 'A', 'B', 'A'] },
+        { number: 5, wordA: 'hip', wordB: 'heap', sequence: ['A', 'B', 'B', 'A', 'A'] },
+        { number: 6, wordA: 'side', wordB: 'site', sequence: ['A', 'A', 'B', 'A', 'B'] },
       ],
     },
     {
@@ -183,7 +180,7 @@ const unit1: Unit = {
       questions: [
         { number: 1,  text: 'Well, I\'m originally ___ Cardiff.', answers: ['from'] },
         { number: 2,  text: 'I\'ve still got a dad ___ lives in Cardiff.', answers: ['that'] },
-        { number: 3,  text: 'He\'s 84 ___ we try ___ get up ___ see ___ as much as possible um, especially ___ the moment...', answers: ['and', 'to', 'and', 'him'] },
+        { number: 3,  text: 'He\'s 84 ___ we try ___ get up ___ see ___ as much as possible um, especially ___ the moment...', answers: ['and', 'and', 'and', 'him', 'at'] },
         { number: 4,  text: 'he\'s just ___ into hospital ___ a couple ___ weeks, ___ he\'s out now ___ seems ___ be OK', answers: ['been', 'for', 'of', 'but', 'and', 'to'] },
         { number: 5,  text: 'she\'s ___ in hospital ___ well', answers: ['been', 'as'] },
         { number: 6,  text: 'he works in the centre ___ London', answers: ['of'] },
@@ -203,22 +200,25 @@ const unit1: Unit = {
       audioFile: 'unit1/014.mp3',
       audioLabel: 'Track 14',
       instruction:
-        'When a word ends in a consonant in spoken English and the next word begins with a vowel, the end of the first word often links with the start of the second. The example below is done for you — mark where you think linking happens in the rest, then listen and check with your teacher (there\'s no printed key for these).',
-      intro: 'Example (track 13):',
+        'When a word ends in a consonant in spoken English and the next word begins with a vowel, the end of the first word often links with the start of the second. Item 1 is done for you as an example. Click the gap between two words where you think they link together in the rest, then check your answers.',
+      intro: 'Click between two words to mark a linking point. Then press Check answers to see how you did.',
+      markUnit: 'gap',
+      checkLabel: 'Check answers',
       items: [
         {
           number: 1,
-          text: 'I\'m<mark class="bg-amber-100 text-amber-800 rounded px-0.5">_</mark>originally from Cardiff. I now live<mark class="bg-amber-100 text-amber-800 rounded px-0.5">_</mark>in Cornwall, which<mark class="bg-amber-100 text-amber-800 rounded px-0.5">_</mark>is a long way from Cardiff.',
+          text: 'I\'m originally from Cardiff. I now live in Cornwall, which is a long way from Cardiff.',
           audioFile: 'unit1/013.mp3',
+          markIndices: [0, 6, 9],
           isExample: true,
         },
-        { number: 2, text: 'but he\'s out now and seems to be OK' },
-        { number: 3, text: 'I\'ve still got a dad that lives in Cardiff.' },
-        { number: 4, text: 'I have a, an elderly cousin that I look after...' },
-        { number: 5, text: 'she\'s been in hospital as well' },
-        { number: 6, text: 'one is married and lives in London and he works in the centre of London' },
-        { number: 7, text: 'He likes gardening and er, grows orchids...' },
-        { number: 8, text: 'He likes palm trees and er, plants from South Africa and Australia.' },
+        { number: 2, text: 'but he\'s out now and seems to be OK', markIndices: [1] },
+        { number: 3, text: 'I\'ve still got a dad that lives in Cardiff.', markIndices: [6] },
+        { number: 4, text: 'I have a, an elderly cousin that I look after...', markIndices: [3, 8] },
+        { number: 5, text: 'she\'s been in hospital as well', markIndices: [1] },
+        { number: 6, text: 'one is married and lives in London and he works in the centre of London', markIndices: [4, 9] },
+        { number: 7, text: 'He likes gardening and er, grows orchids...', markIndices: [5] },
+        { number: 8, text: 'He likes palm trees and er, plants from South Africa and Australia.', markIndices: [3] },
       ],
     },
     {
@@ -229,13 +229,15 @@ const unit1: Unit = {
       audioFile: 'unit1/015.mp3',
       audioLabel: 'Track 15',
       instruction:
-        'When people are talking they often say \'er\' while they think about what to say next. This can be confusing because \'er\' sounds like \'a\'. Notice where Jackie uses \'er\' in these extracts.',
-      intro: 'What sound do you make in your own language when you\'re pausing?',
+        'When people are talking they often say \'er\' while they think about what to say next. This can be confusing because \'er\' sounds like \'a\'. Click each \'er\' you hear, then check your answers.',
+      intro: 'What sound do you make in your own language when you\'re pausing? Click each \'er\', then press Check answers.',
+      markUnit: 'word',
+      checkLabel: 'Check answers',
       items: [
-        { number: 1, text: 'and he works in the centre of London dealing with...' },
-        { number: 2, text: 'and my younger son lives in Hampshire' },
-        { number: 3, text: 'working for lastminute.com as their marketing and media man' },
-        { number: 4, text: 'No, he\'s retired as well. He likes gardening and grows orchids.' },
+        { number: 1, text: 'and he works in the centre of London er, dealing with...', markIndices: [8] },
+        { number: 2, text: 'and my younger son er, lives in Hampshire', markIndices: [4] },
+        { number: 3, text: 'working for lastminute.com er, as their marketing and media man', markIndices: [3] },
+        { number: 4, text: 'No, he\'s retired as well. Er, he likes gardening and er, grows orchids.', markIndices: [5, 10] },
       ],
     },
     {
@@ -278,21 +280,19 @@ const unit1: Unit = {
     },
     {
       id: '4h',
-      kind: 'noticeListen',
+      kind: 'discriminationGrid',
       sectionLabel: '4. Further Listening Practice',
       part: 'H  Discriminating between minimal pairs of sounds 2',
       audioFile: 'unit1/018.mp3',
       audioLabel: 'Track 18',
-      instruction:
-        'As with exercise B, this is a tick-the-box grid in the book (5 repeats per pair, random order) — do it on paper or with your teacher while listening.',
-      intro: 'The pairs:',
-      items: [
-        { number: 1, text: 'rest / west' },
-        { number: 2, text: 'loves / leaves' },
-        { number: 3, text: 'life / live' },
-        { number: 4, text: 'palm / balm' },
-        { number: 5, text: 'time / dime' },
-        { number: 6, text: 'bit / bid' },
+      instruction: 'Each pair is repeated 5 times in a random order. Click which word you hear each time.',
+      pairs: [
+        { number: 1, wordA: 'rest', wordB: 'west', sequence: ['B', 'A', 'B', 'B', 'A'] },
+        { number: 2, wordA: 'loves', wordB: 'leaves', sequence: ['A', 'B', 'B', 'A', 'B'] },
+        { number: 3, wordA: 'life', wordB: 'live', sequence: ['B', 'A', 'B', 'A', 'B'] },
+        { number: 4, wordA: 'palm', wordB: 'balm', sequence: ['A', 'A', 'B', 'B', 'A'] },
+        { number: 5, wordA: 'time', wordB: 'dime', sequence: ['A', 'B', 'A', 'B', 'A'] },
+        { number: 6, wordA: 'bit', wordB: 'bid', sequence: ['A', 'A', 'B', 'A', 'B'] },
       ],
     },
     {
@@ -300,19 +300,18 @@ const unit1: Unit = {
       kind: 'qa',
       sectionLabel: '4. Further Listening Practice',
       part: 'I  Recognising individual words in a stream of speech 4 — dictation',
-      instruction:
-        'Listen to each excerpt from Jackie\'s interview and write down what you hear. Then check your answer with your teacher or a classmate — there\'s no printed key for this one, it\'s designed to be checked by ear.',
+      instruction: 'Listen to each excerpt from Jackie\'s interview and write down exactly what you hear.',
       questions: [
-        { number: 1,  question: 'Listen and write down what you hear.', audioFile: 'unit1/019.mp3' },
-        { number: 2,  question: 'Listen and write down what you hear.', audioFile: 'unit1/020.mp3' },
-        { number: 3,  question: 'Listen and write down what you hear.', audioFile: 'unit1/021.mp3' },
-        { number: 4,  question: 'Listen and write down what you hear.', audioFile: 'unit1/022.mp3' },
-        { number: 5,  question: 'Listen and write down what you hear.', audioFile: 'unit1/023.mp3' },
-        { number: 6,  question: 'Listen and write down what you hear.', audioFile: 'unit1/024.mp3' },
-        { number: 7,  question: 'Listen and write down what you hear.', audioFile: 'unit1/025.mp3' },
-        { number: 8,  question: 'Listen and write down what you hear.', audioFile: 'unit1/026.mp3' },
-        { number: 9,  question: 'Listen and write down what you hear.', audioFile: 'unit1/027.mp3' },
-        { number: 10, question: 'Listen and write down what you hear.', audioFile: 'unit1/028.mp3' },
+        { number: 1,  question: 'Listen and write down what you hear.', audioFile: 'unit1/019.mp3', modelAnswer: 'he\'s just been into hospital for a couple of weeks', strict: true },
+        { number: 2,  question: 'Listen and write down what you hear.', audioFile: 'unit1/020.mp3', modelAnswer: 'but he\'s out now and seems to be OK', strict: true },
+        { number: 3,  question: 'Listen and write down what you hear.', audioFile: 'unit1/021.mp3', modelAnswer: 'she\'s been in hospital as well', strict: true },
+        { number: 4,  question: 'Listen and write down what you hear.', audioFile: 'unit1/022.mp3', modelAnswer: 'but she\'s come out now', strict: true },
+        { number: 5,  question: 'Listen and write down what you hear.', audioFile: 'unit1/023.mp3', modelAnswer: 'on the younger side I\'ve got two sons', strict: true },
+        { number: 6,  question: 'Listen and write down what you hear.', audioFile: 'unit1/024.mp3', modelAnswer: 'one is married and lives in London', strict: true },
+        { number: 7,  question: 'Listen and write down what you hear.', audioFile: 'unit1/025.mp3', modelAnswer: 'he works in the centre of London', strict: true },
+        { number: 8,  question: 'Listen and write down what you hear.', audioFile: 'unit1/026.mp3', modelAnswer: 'I work part-time at the local college...', strict: true },
+        { number: 9,  question: 'Listen and write down what you hear.', audioFile: 'unit1/027.mp3', modelAnswer: 'we\'ve got quite a nice life', strict: true },
+        { number: 10, question: 'Listen and write down what you hear.', audioFile: 'unit1/028.mp3', modelAnswer: 'She\'s been out there for 30 years...', strict: true },
       ],
     },
     {

@@ -11,6 +11,7 @@ import GapFillStepView from '../components/steps/GapFillStepView'
 import QaStepView from '../components/steps/QaStepView'
 import WordBankStepView from '../components/steps/WordBankStepView'
 import NoticeListenStepView from '../components/steps/NoticeListenStepView'
+import DiscriminationGridStepView from '../components/steps/DiscriminationGridStepView'
 
 const STORAGE_KEY = (slug: string) => `progress:${slug}`
 
@@ -163,6 +164,7 @@ export default function UnitPlayerPage() {
           {step.kind === 'qa'           && <QaStepView             key={step.id} step={step} onComplete={advance} />}
           {step.kind === 'wordBank'     && <WordBankStepView       key={step.id} step={step} onComplete={advance} />}
           {step.kind === 'noticeListen' && <NoticeListenStepView   key={step.id} step={step} onComplete={advance} />}
+          {step.kind === 'discriminationGrid' && <DiscriminationGridStepView key={step.id} step={step} onComplete={advance} />}
         </div>
       </main>
     </div>

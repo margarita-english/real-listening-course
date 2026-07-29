@@ -1,11 +1,16 @@
 import { useState } from 'react'
-import type { QaStep, StepAttemptPayload } from '../../types'
+import type { QaQuestion, QaStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
-import { isQaAnswerCorrect } from '../../lib/qaGrading'
+import { isDictationCorrect, isQaAnswerCorrect } from '../../lib/qaGrading'
 
 interface Props {
   step: QaStep
   onComplete: (payload: StepAttemptPayload) => void
+}
+
+function isCorrect(q: QaQuestion, answer: string) {
+  if (q.modelAnswer === undefined) return false
+  return q.strict ? isDictationCorrect(answer, q.modelAnswer) : isQaAnswerCorrect(answer, q.modelAnswer)
 }
 
 export default function QaStepView({ step, onComplete }: Props) {
@@ -14,9 +19,7 @@ export default function QaStepView({ step, onComplete }: Props) {
 
   const allFilled = answers.every(a => a.trim() !== '')
   const gradedCount = step.questions.filter(q => q.modelAnswer !== undefined).length
-  const correctCount = step.questions.filter((q, i) =>
-    q.modelAnswer !== undefined && isQaAnswerCorrect(answers[i], q.modelAnswer)
-  ).length
+  const correctCount = step.questions.filter((q, i) => isCorrect(q, answers[i])).length
 
   return (
     <div className="space-y-4">
@@ -55,7 +58,7 @@ export default function QaStepView({ step, onComplete }: Props) {
                 <div
                   className={[
                     'border rounded-lg px-3 py-2 text-sm',
-                    isQaAnswerCorrect(answers[i], q.modelAnswer)
+                    isCorrect(q, answers[i])
                       ? 'bg-green-50 border-green-200 text-green-800'
                       : 'bg-red-50 border-red-200 text-red-700',
                   ].join(' ')}
@@ -63,7 +66,7 @@ export default function QaStepView({ step, onComplete }: Props) {
                   <span
                     className={[
                       'text-xs font-medium uppercase tracking-wide block mb-0.5',
-                      isQaAnswerCorrect(answers[i], q.modelAnswer) ? 'text-green-600' : 'text-red-500',
+                      isCorrect(q, answers[i]) ? 'text-green-600' : 'text-red-500',
                     ].join(' ')}
                   >
                     Your answer

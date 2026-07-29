@@ -5,6 +5,7 @@ export type StepKind =
   | 'qa'            // open-ended questions (show model answers after submit)
   | 'wordBank'      // fill blanks using words from a provided bank
   | 'noticeListen'  // listen and observe a feature, no grading
+  | 'discriminationGrid' // for each of 5 repeats, pick which of 2 minimal-pair words was said
 
 export interface McqQuestion {
   number: number
@@ -31,6 +32,9 @@ export interface QaQuestion {
   // from the single step-level BaseStep.audioFile.
   audioFile?: string
   audioLabel?: string
+  // Dictation-style exact-transcription grading (every word must match) —
+  // the default lenient keyword grading is for open discussion answers.
+  strict?: boolean
 }
 
 export interface WordBankItem {
@@ -126,6 +130,20 @@ export interface NoticeListenStep extends BaseStep {
   checkLabel?: string  // label on the check-answers button; defaults to "Check answers"
 }
 
+// One minimal pair repeated 5 times in a random order; `sequence` gives the
+// correct word ('A' = wordA, 'B' = wordB) for each of the 5 repetitions.
+export interface DiscriminationPair {
+  number: number
+  wordA: string
+  wordB: string
+  sequence: ('A' | 'B')[]
+}
+
+export interface DiscriminationGridStep extends BaseStep {
+  kind: 'discriminationGrid'
+  pairs: DiscriminationPair[]
+}
+
 export type Step =
   | InfoStep
   | McqStep
@@ -133,6 +151,7 @@ export type Step =
   | QaStep
   | WordBankStep
   | NoticeListenStep
+  | DiscriminationGridStep
 
 export interface Unit {
   slug: string

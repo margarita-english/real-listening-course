@@ -23,3 +23,11 @@ export function isQaAnswerCorrect(studentAnswer: string, modelAnswer: string) {
   const matched = kw.filter(w => studentNorm.includes(w))
   return matched.length / kw.length >= 0.5
 }
+
+// Strict grading for dictation: the point is catching every word, so this
+// requires all words to match (ignoring case, punctuation and apostrophes),
+// not just most of the key content words like isQaAnswerCorrect above.
+export function isDictationCorrect(studentAnswer: string, modelAnswer: string) {
+  const strip = (s: string) => s.toLowerCase().replace(/['’]/g, '').replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim()
+  return strip(studentAnswer) === strip(modelAnswer)
+}
