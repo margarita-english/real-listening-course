@@ -51,10 +51,12 @@ Full product spec: `~/Desktop/AI Projects/Listening Course Platform/more-english
 - **Test:** ✓ navigated the full Unit 1 structure as a student; home page correctly groups by level
 - **Commit:** ✓ "Add level differentiation... and Unit 1 Jackie"
 
-## ⬜ Stage 4 — Teacher dashboard
-- [ ] Teacher sees all students' progress (%, first-attempt, weak features)
-- **Test:** view dashboard as teacher
-- **Commit:** teacher dashboard
+## 🟡 Stage 4 — Teacher dashboard (in progress)
+- [x] Teacher sees all students' progress — per unit, completed/total steps + % + average score, on `/admin`
+- [ ] First-attempt rate
+- [ ] Weak-feature analysis (which connected-speech features a student struggles with)
+- **Test:** ✓ viewed dashboard as teacher against real student data (4 students)
+- **Commit:** ✓ "Show per-student progress on the teacher dashboard"
 
 ## ✅ Stage 5 — Deploy to Railway
 - [x] Railway-ready config: `start` script (serve dist on 0.0.0.0:3000), Node pin, `railway.json`
