@@ -105,7 +105,11 @@ export interface AudioExample {
   written: string
   ipa: string       // e.g. "/aɪ dʌnoʊ/"
   audioFile: string
+  // What happens in this phrase, in the learners' own languages (HTML-safe).
+  explanations?: Record<ExplanationLang, string>
 }
+
+export type ExplanationLang = 'ru' | 'es'
 
 // A distinct, separately-headed sub-topic within an info step — e.g. an
 // info step introducing two unrelated features must render them as two

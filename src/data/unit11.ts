@@ -459,9 +459,24 @@ const unit11: Unit = {
             'A sound is dropped altogether to make the language easier and faster to say. Tap each example to hear it — the word as it\'s written, then how it actually sounds:',
           ],
           audioExamples: [
-            { written: 'I don\'t know', ipa: '/aɪ dəˈnəʊ/', audioFile: 'unit11/elision-dont-know.m4a' },
-            { written: 'camera', ipa: '/ˈkæmrə/', audioFile: 'unit11/elision-camera.m4a' },
-            { written: 'fish and chips', ipa: '/ˈfɪʃ ən ˈtʃɪps/', audioFile: 'unit11/elision-fish-and-chips.m4a' },
+            { written: 'I don\'t know', ipa: '/aɪ dəˈnəʊ/', audioFile: 'unit11/elision-dont-know.m4a',
+              explanations: {
+                ru: 'В слове <strong>don\'t</strong> пропадает звук <strong>/t/</strong>. Две <strong>/n/</strong> (do<strong>n</strong>\'t + k<strong>n</strong>ow, где k не читается) сливаются в одну, а гласный в don\'t ослабевает до короткого /ə/. Поэтому фраза звучит как <strong>«ай дэ-НОУ»</strong> — в разговоре это часто пишут как <em>I dunno</em>.',
+                es: 'En <strong>don\'t</strong> desaparece el sonido <strong>/t/</strong>. Las dos <strong>/n/</strong> (do<strong>n</strong>\'t + k<strong>n</strong>ow, donde la k es muda) se unen en una sola, y la vocal de don\'t se reduce a una /ə/ corta. Por eso suena como <strong>«ai de-NOU»</strong>; en inglés informal a veces se escribe <em>I dunno</em>.',
+              },
+            },
+            { written: 'camera', ipa: '/ˈkæmrə/', audioFile: 'unit11/elision-camera.m4a',
+              explanations: {
+                ru: 'Безударная гласная в середине слова (буква <strong>e</strong>) выпадает. Вместо трёх слогов <em>CAM-e-ra</em> мы слышим два: <strong>«КЭМ-рэ»</strong>. Так часто бывает с безударной гласной после ударного слога: <em>chocolate</em> → «ЧОК-лэт», <em>different</em> → «ДИФ-рэнт».',
+                es: 'La vocal átona del medio (la letra <strong>e</strong>) desaparece. En vez de tres sílabas <em>CA-me-ra</em>, se oyen dos: <strong>«KAM-ra»</strong>. Pasa a menudo con una vocal átona después de la sílaba tónica: <em>chocolate</em> → «CHOK-let», <em>different</em> → «DIF-rent».',
+              },
+            },
+            { written: 'fish and chips', ipa: '/ˈfɪʃ ən ˈtʃɪps/', audioFile: 'unit11/elision-fish-and-chips.m4a',
+              explanations: {
+                ru: 'В слове <strong>and</strong> пропадает звук <strong>/d/</strong>, а гласная ослабевает до короткого /ə/: <em>and</em> → <strong>/ən/</strong>. Получается <strong>«фиш эн ЧИПС»</strong>, и «эн» почти сливается с <em>chips</em> («энч-ипс»). Поэтому на вывесках пишут <em>fish \'n\' chips</em>.',
+                es: 'En <strong>and</strong> desaparece el sonido <strong>/d/</strong> y la vocal se reduce a una /ə/ corta: <em>and</em> → <strong>/ən/</strong>. Se oye <strong>«fish en CHIPS»</strong>, y el «en» casi se une con <em>chips</em> («ench-ips»). Por eso en los carteles se escribe <em>fish \'n\' chips</em>.',
+              },
+            },
           ],
         },
         {

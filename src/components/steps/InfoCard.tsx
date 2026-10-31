@@ -1,6 +1,7 @@
 import type { InfoStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
 import MiniAudioButton from '../MiniAudioButton'
+import NativeExplanations from '../NativeExplanations'
 import StepInstruction from './StepInstruction'
 
 interface Props {
@@ -72,6 +73,8 @@ export default function InfoCard({ step, onComplete }: Props) {
                   ))}
                 </div>
               )}
+
+              {section.audioExamples && <NativeExplanations examples={section.audioExamples} />}
             </div>
           ))}
         </div>
