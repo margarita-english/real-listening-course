@@ -277,7 +277,13 @@ const unit11: Unit = {
       part: 'B  Using the simple past and the past continuous (continued)',
       instruction: 'Read the grammar notes below.',
       body: [
-        'We use the <strong>past continuous</strong> when we are talking about an action which continued for some time in the past:',
+        'We use the <strong>past continuous</strong> when we are talking about an action which continued for some time in the past. Its main uses are:',
+        '<span class="block rounded-lg bg-teal-50 border border-teal-100 px-3 py-2"><span class="block font-semibold text-slate-800">1. Describing a scene in a story</span><span class="block italic text-slate-600">It was a nice day and the sun <strong>was shining</strong>. We <strong>were sitting</strong> in our garden.</span></span>',
+        '<span class="block rounded-lg bg-teal-50 border border-teal-100 px-3 py-2"><span class="block font-semibold text-slate-800">2. Describing two actions happening at the same time in the past</span><span class="block italic text-slate-600">While I <strong>was playing</strong> computer games, my girlfriend <strong>was reading</strong> a book.</span></span>',
+        '<span class="block rounded-lg bg-teal-50 border border-teal-100 px-3 py-2"><span class="block font-semibold text-slate-800">3. Describing a past action in progress interrupted by another event</span><span class="block italic text-slate-600">I <strong>was washing</strong> the dishes when my mom called.</span></span>',
+        '<span class="block rounded-lg bg-teal-50 border border-teal-100 px-3 py-2"><span class="block font-semibold text-slate-800">4. Describing an action in progress at a specific time in the past</span><span class="block italic text-slate-600">What <strong>were you doing</strong> at 8pm yesterday?</span></span>',
+        '<span class="block rounded-lg bg-teal-50 border border-teal-100 px-3 py-2"><span class="block font-semibold text-slate-800">5. Describing temporary situations in the past</span><span class="block italic text-slate-600">We <strong>were living</strong> in Berlin at the time.</span></span>',
+        '<strong>Examples from the interview:</strong>',
       ],
       excerpts: [
         '\'This time last year I <u>was living</u> in Tokyo.\'',
