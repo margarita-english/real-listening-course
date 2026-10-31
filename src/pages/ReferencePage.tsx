@@ -5,6 +5,22 @@ import AudioPlayer from '../components/AudioPlayer'
 import ExerciseReview from '../components/ExerciseReview'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
+import type { GlossaryCategory, GlossaryEntry } from '../types'
+
+const GLOSSARY_GROUPS: { key: GlossaryCategory; title: string }[] = [
+  { key: 'proper', title: '🏙 Proper nouns' },
+  { key: 'word', title: '🔤 Verbs / nouns / adjectives' },
+  { key: 'expression', title: '💬 Expressions / collocations' },
+]
+
+// Units with categorised glossaries are shown in groups; others as one list.
+function glossaryGroups(entries: GlossaryEntry[]) {
+  if (!entries.some(e => e.category)) return [{ key: 'all', title: null, entries }]
+  const groups = GLOSSARY_GROUPS.map(g => ({ ...g, entries: entries.filter(e => e.category === g.key) }))
+  const other = entries.filter(e => !e.category)
+  if (other.length) groups.push({ key: 'other' as GlossaryCategory, title: 'Other', entries: other })
+  return groups.filter(g => g.entries.length > 0)
+}
 
 interface Attempt {
   step_id: string
@@ -153,16 +169,36 @@ export default function ReferencePage() {
         )}
 
         {tab === 'glossary' && (
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm divide-y divide-slate-100">
-            {unit.glossary.map(entry => (
-              <div key={entry.number} className="flex gap-3 px-4 py-3">
-                <span className="shrink-0 text-xs font-semibold text-teal-600 w-5 pt-0.5">{entry.number}</span>
-                <div>
-                  <span className="font-semibold text-sm text-slate-800">{entry.term}</span>
-                  <span className="text-slate-400 text-sm mx-1">—</span>
-                  <span className="text-sm text-slate-600">{entry.definition}</span>
+          <div className="space-y-5">
+            {glossaryGroups(unit.glossary).map(group => (
+              <section key={group.key} aria-labelledby={group.title ? `glossary-${group.key}` : undefined}>
+                {group.title && (
+                  <h2 id={`glossary-${group.key}`} className="text-sm font-semibold text-slate-700 mb-2 px-1">
+                    {group.title} <span className="text-slate-400 font-normal">({group.entries.length})</span>
+                  </h2>
+                )}
+                <div className="bg-white rounded-2xl border border-slate-200 shadow-sm divide-y divide-slate-100">
+                  {group.entries.map(entry => (
+                    <div key={entry.number} className="flex gap-3 px-4 py-3">
+                      <span className="shrink-0 text-xs font-semibold text-teal-600 w-5 pt-0.5">{entry.number}</span>
+                      <div>
+                        <span className="font-semibold text-sm text-slate-800">{entry.term}</span>
+                        {entry.partOfSpeech && (
+                          <span className="ml-1.5 text-xs italic text-slate-400">({entry.partOfSpeech})</span>
+                        )}
+                        <span className="text-slate-400 text-sm mx-1">—</span>
+                        <span className="text-sm text-slate-600">{entry.definition}</span>
+                        {entry.example && (
+                          <p className="mt-1.5 pl-3 border-l-2 border-teal-200 text-sm italic text-slate-500 leading-relaxed">
+                            <span className="not-italic text-xs font-semibold uppercase tracking-wide text-teal-600 mr-1.5">e.g.</span>
+                            <span className="[&_b]:font-semibold [&_b]:not-italic [&_b]:text-slate-700" dangerouslySetInnerHTML={{ __html: entry.example }} />
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
+              </section>
             ))}
           </div>
         )}

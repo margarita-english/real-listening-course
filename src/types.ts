@@ -214,7 +214,12 @@ export interface GlossaryEntry {
   number: number
   term: string
   definition: string
+  example?: string  // may contain <b> around the term
+  category?: GlossaryCategory
+  partOfSpeech?: string  // e.g. 'noun', shown for single words
 }
+
+export type GlossaryCategory = 'proper' | 'word' | 'expression'
 
 // Emitted by a step view when the student finishes it, so the answers can
 // be persisted for later review. `score` is a 0–1 fraction, or null for
