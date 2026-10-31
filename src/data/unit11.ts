@@ -242,7 +242,16 @@ const unit11: Unit = {
         { number: 6,  text: 'She rarely (eat) ___ spicy food, but she (try) ___ a curry for the first time tonight.',           answers: ['eats', 'is trying'] },
         { number: 7,  text: 'The train (leave) ___ at 9am every day, but today it (leave) ___ late because of the strike.',     answers: ['leaves', 'is leaving'] },
         { number: 8,  text: 'I (study) ___ English twice a week, but this term I (study) ___ much harder for the exam.',        answers: ['study', 'am studying'] },
-        { number: 9,  text: 'They (eat) ___ meat occasionally, but right now they (eat) ___ only fish because it\'s Lent.',     answers: ['eat', 'are eating'] },
+        { number: 9,  text: 'They (eat) ___ meat occasionally, but right now they (eat) ___ only fish because it\'s Lent.',     answers: ['eat', 'are eating'],
+          note: {
+            term: 'Lent',
+            explanation: [
+              '<strong>Lent</strong> is a special time in the Christian year. It is the <strong>40 days before Easter</strong>, usually between February and April.',
+              'During Lent, some Christians stop eating meat, or they stop eating or doing something they like, for example chocolate.',
+              'Many people eat <strong>fish</strong> instead of meat, especially on Fridays. That is why the people in this sentence are eating only fish.',
+            ],
+          },
+        },
         { number: 10, text: 'My father (drive) ___ to work every day, but this week he (take) ___ the train because his car is being repaired.', answers: ['drives', 'is taking'] },
       ],
     },

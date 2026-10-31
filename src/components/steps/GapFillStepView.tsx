@@ -3,6 +3,7 @@ import type { GapFillStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
 import { answersMatch } from '../../lib/answerMatching'
 import StepInstruction from './StepInstruction'
+import WordNote from './WordNote'
 
 interface Props {
   step: GapFillStep
@@ -85,7 +86,7 @@ export default function GapFillStepView({ step, onComplete }: Props) {
         {step.questions.map((q, qi) => (
           <div key={q.number} className="flex gap-2 text-sm text-slate-800">
             <span className="shrink-0 font-medium text-slate-500 w-5 text-right">{q.number}.</span>
-            <span className="leading-7">
+            <div className="flex-1 leading-7">
               <SentenceWithGaps
                 text={q.text}
                 answers={q.answers}
@@ -98,7 +99,8 @@ export default function GapFillStepView({ step, onComplete }: Props) {
                   ✓ <span className="text-green-700">{q.answers.join(' / ')}</span>
                 </span>
               )}
-            </span>
+              {q.note && <WordNote note={q.note} />}
+            </div>
           </div>
         ))}
       </div>

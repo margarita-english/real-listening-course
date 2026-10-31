@@ -20,6 +20,14 @@ export interface GapSentence {
   number: number
   text: string        // sentence with ___ for each blank
   answers: string[]   // one entry per blank
+  note?: WordNote     // "Do you know what X is?" check + Learn more
+}
+
+// A word students may not know (often cultural), asked as Yes/No with a
+// short explanation behind "Learn more".
+export interface WordNote {
+  term: string
+  explanation: string[]  // short paragraphs (HTML-safe)
 }
 
 export interface QaQuestion {
