@@ -86,12 +86,14 @@ function ExampleItem({ item, markUnit }: { item: NoticeItem; markUnit: 'word' | 
 function InteractiveItem({
   item,
   markUnit,
+  gapMark,
   selected,
   checked,
   onToggle,
 }: {
   item: NoticeItem
   markUnit: 'word' | 'gap'
+  gapMark?: string
   selected: Set<number>
   checked: boolean
   onToggle: (idx: number) => void
@@ -142,7 +144,7 @@ function InteractiveItem({
                     onClick={() => !checked && onToggle(i)}
                     className={`inline-block px-1 font-bold cursor-pointer transition-colors ${gapClass(i)}`}
                   >
-                    ‿
+                    {!gapMark ? '‿' : selected.has(i) || (checked && correct.has(i)) ? gapMark : '·'}
                   </span>
                 )}
                 {' '}
@@ -190,7 +192,8 @@ export default function NoticeListenStepView({ step, onComplete }: Props) {
       <ol className="space-y-3">
         {step.items.map(item => (
           <li key={item.number} className="flex gap-2 text-sm text-slate-800">
-            <span className="shrink-0 font-medium text-slate-500 w-5 text-right">{item.number}.</span>
+            {/* number 0 = an unnumbered example, as in the book */}
+            <span className="shrink-0 font-medium text-slate-500 w-5 text-right">{item.number > 0 && `${item.number}.`}</span>
             {item.audioFile && <ItemPlayButton src={`/audio/${item.audioFile}`} />}
             <div className="flex-1">
               {item.isExample && (
@@ -205,6 +208,7 @@ export default function NoticeListenStepView({ step, onComplete }: Props) {
                   <InteractiveItem
                     item={item}
                     markUnit={step.markUnit!}
+                    gapMark={step.gapMark}
                     selected={selected[item.number] ?? new Set()}
                     checked={checked}
                     onToggle={idx => toggle(item.number, idx)}

@@ -168,6 +168,7 @@ export interface NoticeListenStep extends BaseStep {
   // mode: 'word' — student clicks words (e.g. stressed syllables); 'gap' —
   // student clicks the space between two words (e.g. linking points).
   markUnit?: 'word' | 'gap'
+  gapMark?: string     // 'gap' mode: word shown in a clicked gap (e.g. 'er') instead of the ‿ linking mark
   checkLabel?: string  // label on the check-answers button; defaults to "Check answers"
 }
 
