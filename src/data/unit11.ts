@@ -780,7 +780,7 @@ const unit11: Unit = {
     { number: 31, term: 'Hammersmith',               definition: 'an area in west London on the north bank of the River Thames',
       category: 'proper',
       example: "We watched a play at a theatre in <b>Hammersmith</b>." },
-    { number: 32, term: 'the Thames',                definition: 'the river which flows through London (pronounced \'Temse\')',
+    { number: 32, term: 'the Thames',                definition: 'the river which flows through London (also the River Thames). Pronounced /temz/ – the "th" sounds like "t".',
       category: 'proper',
       example: "There are lots of boats on <b>the Thames</b> in summer." },
     { number: 33, term: 'taking up',                 definition: 'starting an activity',
