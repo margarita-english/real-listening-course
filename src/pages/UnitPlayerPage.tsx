@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import type { StepAttemptPayload } from '../types'
 import { UNITS } from '../data/units'
@@ -12,6 +12,8 @@ import QaStepView from '../components/steps/QaStepView'
 import WordBankStepView from '../components/steps/WordBankStepView'
 import NoticeListenStepView from '../components/steps/NoticeListenStepView'
 import DiscriminationGridStepView from '../components/steps/DiscriminationGridStepView'
+
+const StepMap = lazy(() => import('../components/StepMap'))
 
 const STORAGE_KEY = (slug: string) => `progress:${slug}`
 
@@ -171,6 +173,16 @@ export default function UnitPlayerPage() {
         </div>
 
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+          {step.map && (
+            <figure className="mb-5">
+              <Suspense fallback={<div className="w-full h-72 sm:h-96 rounded-xl border border-slate-200 bg-slate-100" />}>
+                <StepMap map={step.map} />
+              </Suspense>
+              {step.map.caption && (
+                <figcaption className="mt-1.5 text-xs text-slate-500">{step.map.caption}</figcaption>
+              )}
+            </figure>
+          )}
           {step.figure && (
             <figure className="mb-5">
               <a href={`/${step.figure.src}`} target="_blank" rel="noopener noreferrer" className="block">

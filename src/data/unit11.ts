@@ -124,10 +124,26 @@ const unit11: Unit = {
       part: 'C  Questions',
       audioFile: 'unit11/179.mp3',
       audioLabel: 'Track 179',
-      figure: {
-        src: 'images/unit11/london-map.svg',
-        alt: 'Simplified map of central London. Maida Vale is highlighted in the north-west, near Little Venice, Paddington and Regent\'s Park. Shepherd\'s Bush and Notting Hill are to the south-west, Hyde Park and Oxford Street to the south-east.',
-        caption: 'Maida Vale (green) is in north-west London. Tap the map to make it bigger.',
+      map: {
+        alt: 'Street map of central London. Maida Vale is highlighted in the north-west, near Little Venice, Paddington and Regent\'s Park. Shepherd\'s Bush and Notting Hill are to the south-west, Hyde Park and Oxford Street to the south-east.',
+        caption: 'Maida Vale (green) is in north-west London. Use + and − to zoom, and drag to move the map.',
+        bounds: [[51.498, -0.232], [51.540, -0.122]],
+        highlight: {
+          name: 'Maida Vale',
+          polygon: [
+            [51.5355, -0.1965], [51.5345, -0.1870], [51.5300, -0.1800], [51.5235, -0.1775],
+            [51.5212, -0.1860], [51.5225, -0.1985], [51.5262, -0.2055], [51.5305, -0.2050],
+          ],
+        },
+        places: [
+          { name: 'Shepherd\'s Bush', lat: 51.5046, lng: -0.2236 },
+          { name: 'Notting Hill', lat: 51.5090, lng: -0.2050 },
+          { name: 'Paddington', lat: 51.5154, lng: -0.1755, direction: 'left' },
+          { name: 'Regent\'s Park', lat: 51.5313, lng: -0.1570 },
+          { name: 'Hyde Park', lat: 51.5073, lng: -0.1657, direction: 'bottom' },
+          { name: 'Oxford Street', lat: 51.5152, lng: -0.1415, direction: 'top' },
+          { name: 'Big Ben', lat: 51.5007, lng: -0.1246, direction: 'left' },
+        ],
       },
       instruction:
         'Scott talks about his previous accommodation. Listen and answer the questions.',

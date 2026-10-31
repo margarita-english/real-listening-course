@@ -81,6 +81,16 @@ export interface BaseStep {
   help?: string[]
   // Optional picture shown above the exercise, e.g. a map for context.
   figure?: StepFigure
+  // Optional real street map shown above the exercise.
+  map?: StepMap
+}
+
+export interface StepMap {
+  alt: string
+  caption?: string
+  bounds: [[number, number], [number, number]]  // [[south, west], [north, east]]
+  highlight: { name: string; polygon: [number, number][] }  // [lat, lng] points
+  places: { name: string; lat: number; lng: number; direction?: 'left' | 'right' | 'top' | 'bottom' }[]
 }
 
 export interface StepFigure {
