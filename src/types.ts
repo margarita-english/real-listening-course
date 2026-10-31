@@ -217,6 +217,7 @@ export interface GlossaryEntry {
   example?: string  // may contain <b> around the term
   category?: GlossaryCategory
   partOfSpeech?: string  // e.g. 'noun', shown for single words
+  audioFile?: string     // pronunciation clip, relative to /audio/
 }
 
 export type GlossaryCategory = 'proper' | 'word' | 'expression'

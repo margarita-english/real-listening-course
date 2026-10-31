@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { UNITS } from '../data/units'
 import AudioPlayer from '../components/AudioPlayer'
@@ -14,7 +14,12 @@ const GLOSSARY_GROUPS: { key: GlossaryCategory; title: string }[] = [
 ]
 
 // Units with categorised glossaries are shown in groups; others as one list.
-function glossaryGroups(entries: GlossaryEntry[]) {
+// Alphabetical, ignoring a leading article: "the Thames" sorts under T.
+const sortKey = (term: string) => term.toLowerCase().replace(/^(the|a|an) /, '')
+const alphabetical = (a: GlossaryEntry, b: GlossaryEntry) => sortKey(a.term).localeCompare(sortKey(b.term), 'en')
+
+function glossaryGroups(all: GlossaryEntry[]) {
+  const entries = [...all].sort(alphabetical)
   if (!entries.some(e => e.category)) return [{ key: 'all', title: null, entries }]
   const groups = GLOSSARY_GROUPS.map(g => ({ ...g, entries: entries.filter(e => e.category === g.key) }))
   const other = entries.filter(e => !e.category)
@@ -182,6 +187,7 @@ export default function ReferencePage() {
                     <div key={entry.number} className="flex gap-3 px-4 py-3">
                       <span className="shrink-0 text-xs font-semibold text-teal-600 w-5 pt-0.5">{entry.number}</span>
                       <div>
+                        {entry.audioFile && <PronounceButton src={`/audio/${entry.audioFile}`} term={entry.term} />}
                         <span className="font-semibold text-sm text-slate-800">{entry.term}</span>
                         {entry.partOfSpeech && (
                           <span className="ml-1.5 text-xs italic text-slate-400">({entry.partOfSpeech})</span>
@@ -204,5 +210,40 @@ export default function ReferencePage() {
         )}
       </main>
     </div>
+  )
+}
+
+// Small 🔊 button that plays the pronunciation of one glossary term.
+function PronounceButton({ src, term }: { src: string; term: string }) {
+  const ref = useRef<HTMLAudioElement>(null)
+  const [playing, setPlaying] = useState(false)
+  const [missing, setMissing] = useState(false)
+
+  function play() {
+    const el = ref.current
+    if (!el || missing) return
+    el.currentTime = 0
+    el.play().then(() => setPlaying(true)).catch(() => setMissing(true))
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={play}
+      disabled={missing}
+      aria-label={`Listen: ${term}`}
+      title="Listen"
+      className={[
+        'inline-flex items-center justify-center w-7 h-7 -my-1 mr-1.5 align-middle rounded-full border text-sm transition-colors',
+        missing
+          ? 'border-slate-200 text-slate-300 cursor-not-allowed'
+          : playing
+            ? 'bg-teal-600 border-teal-600 text-white'
+            : 'bg-white border-teal-300 text-teal-700 hover:bg-teal-50',
+      ].join(' ')}
+    >
+      <audio ref={ref} src={src} preload="none" onEnded={() => setPlaying(false)} onPause={() => setPlaying(false)} onError={() => setMissing(true)} />
+      <span aria-hidden="true">🔊</span>
+    </button>
   )
 }
