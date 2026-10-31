@@ -16,7 +16,7 @@ const unit1: Unit = {
       id: '1a',
       kind: 'noticeListen',
       sectionLabel: '1. Pre-Listening Comprehension',
-      part: 'Normalisation — sentence stress',
+      part: 'Normalisation — Sentence Stress',
       instruction:
         'Jackie comes from Cardiff in South Wales, but she now lives in Cornwall in south-west England. Her accent is a mix of South Welsh and Cornish. This exercise is designed to help you get used to Jackie\'s voice. Item 1 is done for you as an example. Click the words you think Jackie stresses in the rest, then check your answers.',
       intro: 'Click each word you think is stressed. Then press Check answers to see how you did.',
@@ -172,7 +172,7 @@ const unit1: Unit = {
       id: '4c',
       kind: 'gapFill',
       sectionLabel: '4. Further Listening Practice',
-      part: 'C  Recognising individual words in a stream of speech 1 — weak forms',
+      part: 'C  Recognising individual words in a stream of speech 1 — Weak Forms',
       audioFile: 'unit1/012.mp3',
       audioLabel: 'Track 12',
       instruction:
@@ -196,12 +196,12 @@ const unit1: Unit = {
       id: '4d',
       kind: 'noticeListen',
       sectionLabel: '4. Further Listening Practice',
-      part: 'D  Recognising individual words in a stream of speech 2 — linking',
+      part: 'D  Recognising individual words in a stream of speech 2 — Linking',
       audioFile: 'unit1/014.mp3',
       audioLabel: 'Track 14',
       instruction:
         'When a word ends in a consonant in spoken English and the next word begins with a vowel, the end of the first word often links with the start of the second. Item 1 is done for you as an example. Click the gap between two words where you think they link together in the text, then check your answers.',
-      intro: 'Click between two words to mark a linking point. Then press Check answers to see how you did.',
+      intro: 'Click between two words to mark a Linking point. Then press Check answers to see how you did.',
       markUnit: 'gap',
       checkLabel: 'Check answers',
       items: [
@@ -244,7 +244,7 @@ const unit1: Unit = {
       id: '4f',
       kind: 'gapFill',
       sectionLabel: '4. Further Listening Practice',
-      part: 'F  Recognising individual words in a stream of speech 3 — elision',
+      part: 'F  Recognising individual words in a stream of speech 3 — Elision',
       audioFile: 'unit1/016.mp3',
       audioLabel: 'Track 16',
       instruction:

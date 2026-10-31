@@ -370,7 +370,7 @@ const unit11: Unit = {
       id: '4a',
       kind: 'noticeListen',
       sectionLabel: '4. Further Listening Practice',
-      part: 'A  Recognising sentence stress',
+      part: 'A  Recognising Sentence Stress',
       audioFile: 'unit11/185.mp3',
       audioLabel: 'Track 185',
       instruction:
@@ -403,7 +403,7 @@ const unit11: Unit = {
       instruction:
         'Linking occurs when the end of one word runs into the start of the next word. It is very common in informal spoken English, but less so in more formal English, such as speeches or lectures.',
       intro:
-        'The most common linking occurs between the letter <em>-s</em> at the end of a word when the next word begins with a vowel, as in these excerpts from the interview:',
+        'The most common Linking occurs between the letter <em>-s</em> at the end of a word when the next word begins with a vowel, as in these excerpts from the interview:',
       items: [
         {
           number: 1,
@@ -431,9 +431,9 @@ const unit11: Unit = {
       audioFile: 'unit11/187.mp3',
       audioLabel: 'Track 187',
       instruction:
-        'However, linking also occurs with other sounds. Item 1 is done for you as an example. Click the gap between two words where you think they link together in the text, then check your answers.',
+        'However, Linking also occurs with other sounds. Item 1 is done for you as an example. Click the gap between two words where you think they link together in the text, then check your answers.',
       intro:
-        'Click between two words to mark a linking point. Then press Check answers to see how you did.',
+        'Click between two words to mark a Linking point. Then press Check answers to see how you did.',
       markUnit: 'gap',
       checkLabel: 'Check answers',
       items: [
@@ -449,7 +449,7 @@ const unit11: Unit = {
       id: '4c0',
       kind: 'info',
       sectionLabel: '4. Further Listening Practice',
-      part: 'C  Features of spoken English: elision and the glottal stop',
+      part: 'C  Features of spoken English: Elision and the Glottal Stop',
       instruction: 'Before you try the gap-fill, here are two distinct features of connected speech you\'ll hear in the excerpts.',
       body: [],
       sections: [
@@ -465,7 +465,7 @@ const unit11: Unit = {
           ],
         },
         {
-          heading: 'The glottal stop',
+          heading: 'The Glottal Stop',
           body: [
             'Often used in standard GB English (like Scott\'s) when /t/ ends a syllable and the next sound is a consonant, replacing the /t/ with a small catch in the throat:',
             '<span class="italic">righ<span class="text-red-600 font-semibold">t</span>ly &nbsp; wi<span class="text-red-600 font-semibold">t</span>ness &nbsp; Sco<span class="text-red-600 font-semibold">t</span>land &nbsp; Bri<span class="text-red-600 font-semibold">t</span>pop &nbsp; hi<span class="text-red-600 font-semibold">t</span>man</span>',
@@ -473,7 +473,7 @@ const unit11: Unit = {
             '<span class="italic">i<span class="text-red-600 font-semibold">t</span> was &nbsp; tha<span class="text-red-600 font-semibold">t</span> thing &nbsp; ca<span class="text-red-600 font-semibold">t</span> flap &nbsp; righ<span class="text-red-600 font-semibold">t</span> side &nbsp; sho<span class="text-red-600 font-semibold">t</span> stopper</span>',
             'GB speakers may also do this with /p/ and /k/ when the next sound is made in the same part of the mouth:',
             '<span class="italic">sto<span class="text-red-600 font-semibold">p</span> me &nbsp; ba<span class="text-red-600 font-semibold">ck</span>ground &nbsp; to<span class="text-red-600 font-semibold">p</span> buy</span>',
-            'In very clear, slow speech, the glottal stop might not be used at all — so don\'t expect to hear it every time.',
+            'In very clear, slow speech, the Glottal Stop might not be used at all — so don\'t expect to hear it every time.',
           ],
         },
       ],
@@ -483,11 +483,11 @@ const unit11: Unit = {
       id: '4c',
       kind: 'gapFill',
       sectionLabel: '4. Further Listening Practice',
-      part: 'C  Features of spoken English: elision and the glottal stop (practice)',
+      part: 'C  Features of spoken English: Elision and the Glottal Stop (practice)',
       audioFile: 'unit11/188.mp3',
       audioLabel: 'Track 188',
       instruction:
-        'This gap-fill exercise focuses on words which you probably know already, but whose pronunciation has changed because of elision or Scott\'s use of the glottal stop. Try to fill in the gaps before you listen to the excerpts, and discuss your predictions with your teacher. Then listen and fill in the gaps.',
+        'This gap-fill exercise focuses on words which you probably know already, but whose pronunciation has changed because of Elision or Scott\'s use of the Glottal Stop. Try to fill in the gaps before you listen to the excerpts, and discuss your predictions with your teacher. Then listen and fill in the gaps.',
       questions: [
         { number: 1,  text: 'I ___ there about a year... a ___ over a year ago.',                                    answers: ['moved', 'bit'] },
         { number: 2,  text: 'it\'s actually a really nice ___ of London',                                            answers: ['part'] },
