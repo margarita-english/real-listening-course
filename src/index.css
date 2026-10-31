@@ -28,3 +28,15 @@ body {
   font-weight: 800;
   padding: 3px 10px;
 }
+
+/* The letter/sound a pronunciation step focuses on, e.g. Unit 11 3C "i". */
+.focus-letter {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1.25em;
+  line-height: 1;
+  color: #be123c;
+  background: #ffe4e6;
+  border-radius: 3px;
+  padding: 0 0.04em;
+}

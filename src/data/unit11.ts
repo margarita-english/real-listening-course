@@ -338,13 +338,13 @@ const unit11: Unit = {
       part: 'C  The Australian accent and the letter i',
       audioFile: 'unit11/183.mp3',
       audioLabel: 'Track 183',
-      instruction: 'Listen to how Scott pronounces the letter i in the following excerpts.',
+      instruction: 'Listen to how Scott pronounces the letter <span class="focus-letter">i</span> in the following excerpts.',
       intro:
-        'Australian native speakers tend to pronounce the letter <em>i</em> with more rounded lips and a more curled tongue than British native speakers so that it almost sounds like the letter <em>o</em> is followed by the letter <em>i</em>, as in the word <em>toy</em>.',
+        'Australian native speakers tend to pronounce the letter <span class="focus-letter">i</span> with more rounded lips and a more curled tongue than British native speakers so that it almost sounds like the letter <em>o</em> is followed by the letter <span class="focus-letter">i</span>, as in the word <em>toy</em>.',
       items: [
-        { number: 1, text: 'very... um, w<strong>i</strong>de streets' },
-        { number: 2, text: 'It\'s certa<strong>i</strong>nly a term <strong>I</strong> wasn\'t fam<strong>i</strong>l<strong>i</strong>ar w<strong>i</strong>th unt<strong>i</strong>l <strong>I</strong> came to London.' },
-        { number: 3, text: 'I\'m certa<strong>i</strong>nly do<strong>i</strong>ng less exerc<strong>i</strong>se than <strong>I</strong> was two years ago.' },
+        { number: 1, text: 'very... um, w<span class="focus-letter">i</span>de streets' },
+        { number: 2, text: 'It\'s certa<span class="focus-letter">i</span>nly a term <span class="focus-letter">I</span> wasn\'t fam<span class="focus-letter">i</span>l<span class="focus-letter">i</span>ar w<span class="focus-letter">i</span>th unt<span class="focus-letter">i</span>l <span class="focus-letter">I</span> came to London.' },
+        { number: 3, text: 'I\'m certa<span class="focus-letter">i</span>nly do<span class="focus-letter">i</span>ng less exerc<span class="focus-letter">i</span>se than <span class="focus-letter">I</span> was two years ago.' },
       ],
     },
 

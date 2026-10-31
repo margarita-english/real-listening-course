@@ -40,7 +40,8 @@ export default function StepInstruction({ step }: { step: Step }) {
 
   return (
     <div className="flex items-start gap-2">
-      <p className="flex-1 text-slate-600 text-sm leading-relaxed">{step.instruction}</p>
+      {/* Instructions may contain simple inline HTML, e.g. a highlighted focus letter. */}
+      <p className="flex-1 text-slate-600 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: step.instruction }} />
       <span
         ref={wrapRef}
         className="relative shrink-0"
