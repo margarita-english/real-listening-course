@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import type { GapFillStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
 import { answersMatch } from '../../lib/answerMatching'
+import StepInstruction from './StepInstruction'
 
 interface Props {
   step: GapFillStep
@@ -78,7 +79,7 @@ export default function GapFillStepView({ step, onComplete }: Props) {
         <AudioPlayer src={`/audio/${step.audioFile}`} label={step.audioLabel} />
       )}
 
-      <p className="text-slate-600 text-sm leading-relaxed">{step.instruction}</p>
+      <StepInstruction step={step} />
 
       <div className="space-y-3" ref={firstInputRef as any}>
         {step.questions.map((q, qi) => (

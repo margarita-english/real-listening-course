@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { WordBankStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
+import StepInstruction from './StepInstruction'
 
 interface Props {
   step: WordBankStep
@@ -66,7 +67,7 @@ export default function WordBankStepView({ step, onComplete }: Props) {
         <AudioPlayer src={`/audio/${step.audioFile}`} label={step.audioLabel} />
       )}
 
-      <p className="text-slate-600 text-sm leading-relaxed">{step.instruction}</p>
+      <StepInstruction step={step} />
 
       {/* Word bank — tap or drag a word into a gap below */}
       <div className="flex flex-wrap gap-2 p-3 bg-slate-50 border border-slate-200 rounded-xl min-h-[3rem]">

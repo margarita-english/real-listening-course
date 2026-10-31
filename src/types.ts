@@ -68,6 +68,9 @@ export interface BaseStep {
   instruction: string
   audioFile?: string    // relative to /audio/, e.g. "unit11/176.mp3"
   audioLabel?: string   // e.g. "Track 176"
+  // Overrides the default per-kind "What to do" text behind the ⓘ button
+  // (see lib/stepHelp.ts). One short, simple sentence per line.
+  help?: string[]
 }
 
 // Word/phrase shown as normally spelled, its phonemic script, and a

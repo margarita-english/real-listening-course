@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import type { NoticeItem, NoticeListenStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
+import StepInstruction from './StepInstruction'
 
 interface Props {
   step: NoticeListenStep
@@ -179,7 +180,7 @@ export default function NoticeListenStepView({ step, onComplete }: Props) {
         <AudioPlayer src={`/audio/${step.audioFile}`} label={step.audioLabel} />
       )}
 
-      <p className="text-slate-600 text-sm leading-relaxed">{step.instruction}</p>
+      <StepInstruction step={step} />
 
       <div
         className="text-slate-600 text-sm leading-relaxed whitespace-pre-line bg-slate-50 rounded-xl p-4 border border-slate-200"

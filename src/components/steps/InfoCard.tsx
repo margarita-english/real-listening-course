@@ -1,6 +1,7 @@
 import type { InfoStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
 import MiniAudioButton from '../MiniAudioButton'
+import StepInstruction from './StepInstruction'
 
 interface Props {
   step: InfoStep
@@ -14,7 +15,7 @@ export default function InfoCard({ step, onComplete }: Props) {
         <AudioPlayer src={`/audio/${step.audioFile}`} label={step.audioLabel} />
       )}
 
-      <p className="text-slate-600 text-sm leading-relaxed">{step.instruction}</p>
+      <StepInstruction step={step} />
 
       <div className="space-y-2">
         {step.body.map((line, i) => (

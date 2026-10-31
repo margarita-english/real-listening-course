@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { QaQuestion, QaStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
 import { isDictationCorrect, isQaAnswerCorrect } from '../../lib/qaGrading'
+import StepInstruction from './StepInstruction'
 
 interface Props {
   step: QaStep
@@ -27,7 +28,7 @@ export default function QaStepView({ step, onComplete }: Props) {
         <AudioPlayer src={`/audio/${step.audioFile}`} label={step.audioLabel} />
       )}
 
-      <p className="text-slate-600 text-sm leading-relaxed">{step.instruction}</p>
+      <StepInstruction step={step} />
 
       <div className="space-y-4">
         {step.questions.map((q, i) => (

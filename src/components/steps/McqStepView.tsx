@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { McqStep, StepAttemptPayload } from '../../types'
+import StepInstruction from './StepInstruction'
 
 interface Props {
   step: McqStep
@@ -19,7 +20,7 @@ export default function McqStepView({ step, onComplete }: Props) {
 
   return (
     <div className="space-y-5">
-      <p className="text-slate-600 text-sm leading-relaxed">{step.instruction}</p>
+      <StepInstruction step={step} />
 
       {step.questions.map(q => (
         <div key={q.number} className="space-y-2">

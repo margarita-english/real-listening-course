@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { DiscriminationGridStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
+import StepInstruction from './StepInstruction'
 
 interface Props {
   step: DiscriminationGridStep
@@ -37,7 +38,7 @@ export default function DiscriminationGridStepView({ step, onComplete }: Props) 
         <AudioPlayer src={`/audio/${step.audioFile}`} label={step.audioLabel} />
       )}
 
-      <p className="text-slate-600 text-sm leading-relaxed">{step.instruction}</p>
+      <StepInstruction step={step} />
 
       <div className="space-y-4">
         {step.pairs.map(pair => (
