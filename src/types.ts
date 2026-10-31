@@ -71,6 +71,14 @@ export interface BaseStep {
   // Overrides the default per-kind "What to do" text behind the ⓘ button
   // (see lib/stepHelp.ts). One short, simple sentence per line.
   help?: string[]
+  // Optional picture shown above the exercise, e.g. a map for context.
+  figure?: StepFigure
+}
+
+export interface StepFigure {
+  src: string       // relative to /, e.g. "images/unit11/london-map.svg"
+  alt: string
+  caption?: string
 }
 
 // Word/phrase shown as normally spelled, its phonemic script, and a

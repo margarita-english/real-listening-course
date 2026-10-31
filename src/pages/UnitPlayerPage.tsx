@@ -158,6 +158,20 @@ export default function UnitPlayerPage() {
         </div>
 
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+          {step.figure && (
+            <figure className="mb-5">
+              <a href={`/${step.figure.src}`} target="_blank" rel="noopener noreferrer" className="block">
+                <img
+                  src={`/${step.figure.src}`}
+                  alt={step.figure.alt}
+                  className="w-full h-auto rounded-xl border border-slate-200"
+                />
+              </a>
+              {step.figure.caption && (
+                <figcaption className="mt-1.5 text-xs text-slate-500">{step.figure.caption}</figcaption>
+              )}
+            </figure>
+          )}
           {step.kind === 'info'         && <InfoCard               key={step.id} step={step} onComplete={advance} />}
           {step.kind === 'mcq'          && <McqStepView            key={step.id} step={step} onComplete={advance} />}
           {step.kind === 'gapFill'      && <GapFillStepView        key={step.id} step={step} onComplete={advance} />}

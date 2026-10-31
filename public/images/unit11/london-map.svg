@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 594" width="800" height="594" font-family="system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif" role="img" aria-labelledby="t">
+<title id="t">Simplified map of central London. Maida Vale is highlighted in the north-west, near Regent's Park and Paddington.</title>
+<rect width="800" height="594" fill="#f4f1ea"/>
+<path d="M319.3,391.1 C336.1,371.3 390.5,386.0 423.5,383.5 C456.6,381.0 493.6,360.6 517.6,375.9 C541.7,391.2 569.2,456.1 568.1,475.3 C566.9,494.6 551.8,487.0 510.9,491.5 C470.0,496.0 354.6,519.1 322.7,502.3 C290.8,485.6 302.5,410.9 319.3,391.1 Z" fill="#cfe5c2" stroke="#a9cf98" stroke-width="1.5"/>
+<path d="M490.8,194.5 C488.5,169.2 507.6,137.7 524.4,124.2 C541.2,110.7 575.9,101.7 591.6,113.4 C607.3,125.1 616.2,169.2 618.5,194.5 C620.7,219.7 618.5,251.2 605.0,264.7 C591.6,278.2 556.9,287.2 537.8,275.5 C518.8,263.8 493.0,219.7 490.8,194.5 Z" fill="#cfe5c2" stroke="#a9cf98" stroke-width="1.5"/>
+<path d="M-60.5,637.4 C-41.5,641.0 24.1,639.2 53.8,659.0 C83.5,678.8 97.5,722.0 117.6,756.2 C137.8,790.4 142.9,839.0 174.8,864.2 C206.7,889.4 270.0,921.8 309.2,907.4 C348.5,893.0 382.1,811.1 410.1,777.8 C438.1,744.5 449.3,722.9 477.3,707.6 C505.3,692.3 544.5,693.2 578.2,686.0 C611.8,678.8 651.5,672.5 679.0,664.4 C706.4,656.3 728.9,654.5 742.9,637.4 C756.9,620.3 758.5,587.0 763.0,561.7 C767.5,536.5 764.7,507.7 769.7,486.1 C774.8,464.5 773.7,443.8 793.3,432.1 C812.9,420.4 853.8,415.9 887.4,415.9 C921.0,415.9 965.8,426.7 995.0,432.1 C1024.1,437.5 1051.0,445.6 1062.2,448.3" fill="none" stroke="#9cc9e6" stroke-width="16" stroke-linecap="round"/>
+<path d="M141.2,253.9 C158.0,256.2 211.8,263.8 242.0,267.9 C272.3,272.1 304.2,275.1 322.7,278.7 C341.2,282.3 342.9,291.0 352.9,289.5 C363.0,288.1 368.1,280.2 383.2,270.1 C398.3,260.0 424.6,243.4 443.7,229.0 C462.7,214.6 480.7,202.9 497.5,183.6 C514.3,164.4 524.4,128.7 544.5,113.4 C564.7,98.1 590.5,88.2 618.5,91.8 C646.5,95.4 696.9,127.8 712.6,135.0" fill="none" stroke="#9cc9e6" stroke-width="4" stroke-linecap="round"/>
+<path d="M518.3,375.9 L635.3,354.3 L705.9,340.3" fill="none" stroke="#f2b84b" stroke-width="7" stroke-linecap="round"/>
+<path d="M208.4,194.5 C219.0,177.7 245.4,143.1 265.5,135.0 C285.7,126.9 309.8,134.1 329.4,145.8 C349.0,157.5 375.4,184.2 383.2,205.3 C391.0,226.3 386.6,258.2 376.5,272.2 C366.4,286.3 344.0,289.5 322.7,289.5 C301.4,289.5 268.9,281.2 248.7,272.2 C228.6,263.2 208.4,248.5 201.7,235.5 C195.0,222.5 197.8,211.2 208.4,194.5 Z" fill="#0d9488" fill-opacity="0.28" stroke="#0d9488" stroke-width="3" stroke-dasharray="7 4"/>
+<circle cx="83.4" cy="468.8" r="6" fill="#64748b"/>
+<text x="95.4" y="476.8" font-size="24" text-anchor="start" font-weight="500" fill="#475569" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Shepherd&#8217;s Bush</text>
+<circle cx="208.4" cy="421.3" r="6" fill="#64748b"/>
+<text x="220.4" y="429.3" font-size="24" text-anchor="start" font-weight="500" fill="#475569" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Notting Hill</text>
+<circle cx="275.6" cy="43.2" r="6" fill="#64748b"/>
+<text x="287.6" y="51.2" font-size="24" text-anchor="start" font-weight="500" fill="#475569" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Kilburn</text>
+<circle cx="406.7" cy="352.2" r="6" fill="#64748b"/>
+<text x="394.7" y="346.2" font-size="24" text-anchor="end" font-weight="500" fill="#475569" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Paddington</text>
+<circle cx="349.6" cy="286.3" r="6" fill="#64748b"/>
+<text x="339.6" y="312.3" font-size="24" text-anchor="end" font-weight="500" fill="#475569" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Little Venice</text>
+<circle cx="627.9" cy="95.1" r="6" fill="#64748b"/>
+<text x="627.9" y="81.1" font-size="24" text-anchor="middle" font-weight="500" fill="#475569" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Camden Town</text>
+<circle cx="518.3" cy="375.9" r="6" fill="#64748b"/>
+<text x="526.3" y="403.9" font-size="24" text-anchor="start" font-weight="500" fill="#475569" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Marble Arch</text>
+<circle cx="635.3" cy="354.3" r="6" fill="#64748b"/>
+<text x="643.3" y="340.3" font-size="24" text-anchor="start" font-weight="500" fill="#475569" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Oxford Circus</text>
+<circle cx="632.6" cy="503.4" r="6" fill="#64748b"/>
+<text x="620.6" y="511.4" font-size="24" text-anchor="end" font-weight="500" fill="#475569" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Buckingham Palace</text>
+<circle cx="748.9" cy="511.0" r="6" fill="#64748b"/>
+<text x="736.9" y="519.0" font-size="24" text-anchor="end" font-weight="500" fill="#475569" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Big Ben</text>
+<text x="443.7" y="436.4" font-size="22" text-anchor="middle" font-weight="600" fill="#4d7c3a" font-style="italic" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Hyde Park</text>
+<text x="554.6" y="185.8" font-size="21" text-anchor="middle" font-weight="600" fill="#4d7c3a" font-style="italic" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Regent&#8217;s</text>
+<text x="554.6" y="209.8" font-size="21" text-anchor="middle" font-weight="600" fill="#4d7c3a" font-style="italic" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Park</text>
+<text x="756.3" y="567.1" font-size="21" text-anchor="end" font-weight="600" fill="#3b82b6" font-style="italic" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Thames</text>
+<text x="662.3" y="375.7" font-size="20" text-anchor="middle" font-weight="600" fill="#b7791f" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">Oxford Street</text>
+<circle cx="292.4" cy="216.1" r="10" fill="#0f766e" stroke="#fff" stroke-width="3"/>
+<text x="292.4" y="194.1" font-size="32" text-anchor="middle" font-weight="800" fill="#0f766e" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">MAIDA VALE</text>
+<g transform="translate(760,40)"><path d="M0,-22 L9,8 L0,2 L-9,8 Z" fill="#475569"/><text x="0.0" y="28.0" font-size="20" text-anchor="middle" font-weight="700" fill="#475569" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">N</text></g>
+<g transform="translate(24,568)"><rect width="97.0" height="6" fill="#475569"/><text x="0.0" y="-8.0" font-size="20" text-anchor="start" font-weight="600" fill="#475569" stroke="#f4f1ea" stroke-width="4" paint-order="stroke" stroke-linejoin="round">1 km</text></g>
+</svg>

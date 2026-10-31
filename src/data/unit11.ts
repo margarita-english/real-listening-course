@@ -124,6 +124,11 @@ const unit11: Unit = {
       part: 'C  Questions',
       audioFile: 'unit11/179.mp3',
       audioLabel: 'Track 179',
+      figure: {
+        src: 'images/unit11/london-map.svg',
+        alt: 'Simplified map of central London. Maida Vale is highlighted in the north-west, near Little Venice, Paddington and Regent\'s Park. Shepherd\'s Bush and Notting Hill are to the south-west, Hyde Park and Oxford Street to the south-east.',
+        caption: 'Maida Vale (green) is in north-west London. Tap the map to make it bigger.',
+      },
       instruction:
         'Scott talks about his previous accommodation. Listen and answer the questions.',
       questions: [
