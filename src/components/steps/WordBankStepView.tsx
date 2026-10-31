@@ -70,9 +70,15 @@ export default function WordBankStepView({ step, onComplete }: Props) {
 
       <StepInstruction step={step} />
 
-      {/* Word bank — tap or drag a word into a gap below */}
-      <div className="flex flex-wrap gap-2 p-3 bg-slate-50 border border-slate-200 rounded-xl min-h-[3rem]">
-        {availableBank.length === 0 && <span className="text-xs text-slate-400 italic">All words placed</span>}
+      <div className="flex gap-3 items-start">
+      {/* Word bank — a sticky left column, so the words stay visible while
+          scrolling through the sentences (important on phones). */}
+      <aside
+        aria-label="Word bank"
+        className="sticky top-[4.5rem] self-start w-28 sm:w-40 shrink-0 max-h-[calc(100vh-6rem)] overflow-y-auto flex flex-col gap-1.5 p-2 bg-slate-50 border border-slate-200 rounded-xl"
+      >
+        <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 px-0.5">Words</p>
+        {availableBank.length === 0 && <span className="text-xs text-slate-400 italic px-0.5">All words placed</span>}
         {availableBank.map(({ word, index }) => (
           <button
             key={index}
@@ -80,7 +86,7 @@ export default function WordBankStepView({ step, onComplete }: Props) {
             onDragStart={e => e.dataTransfer.setData('text/plain', String(index))}
             onClick={() => !checked && setSelected(selected === index ? null : index)}
             className={[
-              'px-2.5 py-1 rounded-lg text-sm font-medium shadow-sm border transition-colors cursor-grab active:cursor-grabbing',
+              'w-full text-left break-words px-2 py-1 rounded-lg text-sm font-medium shadow-sm border transition-colors cursor-grab active:cursor-grabbing',
               selected === index
                 ? 'bg-teal-600 border-teal-600 text-white'
                 : 'bg-white border-slate-300 text-slate-700 hover:border-teal-400',
@@ -89,9 +95,9 @@ export default function WordBankStepView({ step, onComplete }: Props) {
             {word}
           </button>
         ))}
-      </div>
+      </aside>
 
-      <div className="space-y-3">
+      <div className="flex-1 min-w-0 space-y-3">
         {step.questions.map((q, qi) => {
           let gapCounter = 0
           return (
@@ -136,6 +142,7 @@ export default function WordBankStepView({ step, onComplete }: Props) {
             </div>
           )
         })}
+      </div>
       </div>
 
       {!checked ? (

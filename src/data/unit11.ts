@@ -620,7 +620,7 @@ const unit11: Unit = {
       sectionLabel: '5. Further Language Development',
       part: 'B  Phrasal verbs',
       instruction:
-        'Scott uses a number of phrasal verbs in his interview. A phrasal verb is a verb followed by a preposition or adverb or both which changes the meaning of the main verb, as in this example: \'When are you going to give up smoking?\' Insert the missing preposition in each sentence. The phrasal verbs are taken from Scott\'s interview.',
+        'Scott uses a number of phrasal verbs in his interview. A phrasal verb is a verb followed by a preposition or adverb or both which changes the meaning of the main verb, as in this example:<span class="block my-2 pl-3 border-l-4 border-teal-300 italic">\'When are you going to give <strong>up</strong> smoking?\'</span><span class="block">Insert the missing preposition in each sentence. The phrasal verbs are taken from Scott\'s interview.</span>',
       bank: ['for', 'into', 'on', 'up', 'up'],
       questions: [
         { number: 1, text: 'My parents took ___ golf when they retired.',                                      answer: 'up' },
