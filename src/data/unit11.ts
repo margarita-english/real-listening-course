@@ -484,11 +484,41 @@ const unit11: Unit = {
           body: [
             'Often used in standard GB English (like Scott\'s) when /t/ ends a syllable and the next sound is a consonant, replacing the /t/ with a small catch in the throat:',
             '<span class="italic">righ<span class="text-red-600 font-semibold">t</span>ly &nbsp; wi<span class="text-red-600 font-semibold">t</span>ness &nbsp; Sco<span class="text-red-600 font-semibold">t</span>land &nbsp; Bri<span class="text-red-600 font-semibold">t</span>pop &nbsp; hi<span class="text-red-600 font-semibold">t</span>man</span>',
+            'Tap each word to hear it. The <strong>ʔ</strong> in the phonemic script marks the Glottal Stop:',
+          ],
+          audioExamples: [
+            { written: 'rightly', ipa: '/ˈraɪʔli/', audioFile: 'unit11/glottal-rightly.mp3' },
+            { written: 'witness', ipa: '/ˈwɪʔnəs/', audioFile: 'unit11/glottal-witness.mp3' },
+            { written: 'Scotland', ipa: '/ˈskɒʔlənd/', audioFile: 'unit11/glottal-scotland.mp3' },
+            { written: 'Britpop', ipa: '/ˈbrɪʔpɒp/', audioFile: 'unit11/glottal-britpop.mp3' },
+            { written: 'hitman', ipa: '/ˈhɪʔmæn/', audioFile: 'unit11/glottal-hitman.mp3' },
+          ],
+        },
+        {
+          heading: 'The Glottal Stop between words',
+          body: [
             'This happens between words too:',
             '<span class="italic">i<span class="text-red-600 font-semibold">t</span> was &nbsp; tha<span class="text-red-600 font-semibold">t</span> thing &nbsp; ca<span class="text-red-600 font-semibold">t</span> flap &nbsp; righ<span class="text-red-600 font-semibold">t</span> side &nbsp; sho<span class="text-red-600 font-semibold">t</span> stopper</span>',
+          ],
+          audioExamples: [
+            { written: 'it was', ipa: '/ɪʔ wəz/', audioFile: 'unit11/glottal-it-was.mp3' },
+            { written: 'that thing', ipa: '/ðæʔ θɪŋ/', audioFile: 'unit11/glottal-that-thing.mp3' },
+            { written: 'cat flap', ipa: '/ˈkæʔ flæp/', audioFile: 'unit11/glottal-cat-flap.mp3' },
+            { written: 'right side', ipa: '/ˌraɪʔ ˈsaɪd/', audioFile: 'unit11/glottal-right-side.mp3' },
+            { written: 'shot stopper', ipa: '/ˈʃɒʔ stɒpə/', audioFile: 'unit11/glottal-shot-stopper.mp3' },
+          ],
+        },
+        {
+          heading: 'The Glottal Stop with /p/ and /k/',
+          body: [
             'GB speakers may also do this with /p/ and /k/ when the next sound is made in the same part of the mouth:',
             '<span class="italic">sto<span class="text-red-600 font-semibold">p</span> me &nbsp; ba<span class="text-red-600 font-semibold">ck</span>ground &nbsp; to<span class="text-red-600 font-semibold">p</span> buy</span>',
             'In very clear, slow speech, the Glottal Stop might not be used at all — so don\'t expect to hear it every time.',
+          ],
+          audioExamples: [
+            { written: 'stop me', ipa: '/ˈstɒʔ mi/', audioFile: 'unit11/glottal-stop-me.mp3' },
+            { written: 'background', ipa: '/ˈbæʔɡraʊnd/', audioFile: 'unit11/glottal-background.mp3' },
+            { written: 'top buy', ipa: '/ˌtɒʔ ˈbaɪ/', audioFile: 'unit11/glottal-top-buy.mp3' },
           ],
           notes: [
             {
