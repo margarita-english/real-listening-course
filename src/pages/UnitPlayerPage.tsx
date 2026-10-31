@@ -12,6 +12,7 @@ import QaStepView from '../components/steps/QaStepView'
 import WordBankStepView from '../components/steps/WordBankStepView'
 import NoticeListenStepView from '../components/steps/NoticeListenStepView'
 import DiscriminationGridStepView from '../components/steps/DiscriminationGridStepView'
+import ErrorCorrectionStepView from '../components/steps/ErrorCorrectionStepView'
 
 const StepMap = lazy(() => import('../components/StepMap'))
 
@@ -204,6 +205,7 @@ export default function UnitPlayerPage() {
           {step.kind === 'wordBank'     && <WordBankStepView       key={step.id} step={step} onComplete={advance} />}
           {step.kind === 'noticeListen' && <NoticeListenStepView   key={step.id} step={step} onComplete={advance} />}
           {step.kind === 'discriminationGrid' && <DiscriminationGridStepView key={step.id} step={step} onComplete={advance} />}
+          {step.kind === 'errorCorrection' && <ErrorCorrectionStepView key={step.id} step={step} onComplete={advance} />}
         </div>
 
         <div className="mt-4 flex items-center justify-between gap-3">

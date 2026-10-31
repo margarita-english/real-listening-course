@@ -110,5 +110,13 @@ export function getStepHelp(step: Step): string[] {
         'For each number (1 to 5), click the word you hear.',
         'Then click Check answers.',
       ]
+
+    case 'errorCorrection':
+      return [
+        'Each sentence has one mistake.',
+        'Change the sentence in the box to make it correct.',
+        'Need help? Click Give me some hints. The mistakes will be yellow.',
+        'Click Check answers. If a sentence is wrong, you can try one more time.',
+      ]
   }
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { McqStep, StepAttemptPayload } from '../../types'
+import AudioPlayer from '../AudioPlayer'
 import StepInstruction from './StepInstruction'
 import ResultSummary from './ResultSummary'
 
@@ -21,6 +22,10 @@ export default function McqStepView({ step, onComplete }: Props) {
 
   return (
     <div className="space-y-5">
+      {step.audioFile && (
+        <AudioPlayer src={`/audio/${step.audioFile}`} label={step.audioLabel} />
+      )}
+
       <StepInstruction step={step} />
 
       {step.questions.map(q => (

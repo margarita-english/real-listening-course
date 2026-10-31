@@ -185,6 +185,23 @@ export interface DiscriminationGridStep extends BaseStep {
   pairs: DiscriminationPair[]
 }
 
+// A sentence with one vocabulary mistake. The student rewrites it; the
+// rewrite is correct when it contains one of `accept` and none of `reject`.
+export interface ErrorCorrectionItem {
+  number: number
+  text: string        // the sentence as given, with the mistake
+  mistake: string     // exact part of `text` highlighted by "Give me some hints"
+  accept: string[]
+  reject: string[]
+  answer: string      // shown after the last check
+  explanation: string
+}
+
+export interface ErrorCorrectionStep extends BaseStep {
+  kind: 'errorCorrection'
+  items: ErrorCorrectionItem[]
+}
+
 export type Step =
   | InfoStep
   | McqStep
@@ -193,6 +210,7 @@ export type Step =
   | WordBankStep
   | NoticeListenStep
   | DiscriminationGridStep
+  | ErrorCorrectionStep
 
 export interface Unit {
   slug: string

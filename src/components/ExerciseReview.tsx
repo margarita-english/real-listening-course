@@ -1,6 +1,7 @@
 import type { QaQuestion, Step } from '../types'
 import { isDictationCorrect, isQaAnswerCorrect } from '../lib/qaGrading'
 import { answersMatch } from '../lib/answerMatching'
+import { isCorrection } from '../lib/errorCorrection'
 
 function isQaCorrect(q: QaQuestion, answer: string) {
   if (q.modelAnswer === undefined) return false
@@ -177,6 +178,24 @@ export default function ExerciseReview({ step, attempt }: Props) {
             </div>
           </div>
         ))}
+      </div>
+    )
+  }
+
+  if (step.kind === 'errorCorrection') {
+    const final = ((attempt.answers ?? {}) as { final?: string[] }).final ?? []
+    return (
+      <div className="space-y-2">
+        {step.items.map((item, i) => {
+          const ok = isCorrection(item, final[i] ?? '')
+          return (
+            <p key={item.number} className="text-sm text-slate-800">
+              <span className="text-slate-500 font-medium mr-1">{item.number}.</span>
+              <span className={ok ? 'text-green-700' : 'text-red-600'}>{final[i] || '(blank)'}</span>
+              <span className="text-xs text-slate-400 ml-1">— correct: {item.answer}</span>
+            </p>
+          )
+        })}
       </div>
     )
   }
