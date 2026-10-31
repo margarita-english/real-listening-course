@@ -200,7 +200,7 @@ const unit1: Unit = {
       audioFile: 'unit1/014.mp3',
       audioLabel: 'Track 14',
       instruction:
-        'When a word ends in a consonant in spoken English and the next word begins with a vowel, the end of the first word often links with the start of the second. Item 1 is done for you as an example. Click the gap between two words where you think they link together in the rest, then check your answers.',
+        'When a word ends in a consonant in spoken English and the next word begins with a vowel, the end of the first word often links with the start of the second. Item 1 is done for you as an example. Click the gap between two words where you think they link together in the text, then check your answers.',
       intro: 'Click between two words to mark a linking point. Then press Check answers to see how you did.',
       markUnit: 'gap',
       checkLabel: 'Check answers',

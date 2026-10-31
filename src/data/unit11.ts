@@ -431,7 +431,7 @@ const unit11: Unit = {
       audioFile: 'unit11/187.mp3',
       audioLabel: 'Track 187',
       instruction:
-        'However, linking also occurs with other sounds. Item 1 is done for you as an example. Click the gap between two words where you think they link together in the rest, then check your answers.',
+        'However, linking also occurs with other sounds. Item 1 is done for you as an example. Click the gap between two words where you think they link together in the text, then check your answers.',
       intro:
         'Click between two words to mark a linking point. Then press Check answers to see how you did.',
       markUnit: 'gap',
