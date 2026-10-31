@@ -111,6 +111,13 @@ export interface AudioExample {
 
 export type ExplanationLang = 'ru' | 'es'
 
+// A point explained in the learners' own languages, shown behind the
+// 🇷🇺/🇪🇸 switch. `label` is the English heading (HTML-safe).
+export interface NativeNote {
+  label: string
+  text: Record<ExplanationLang, string>
+}
+
 // A distinct, separately-headed sub-topic within an info step — e.g. an
 // info step introducing two unrelated features must render them as two
 // clearly separate blocks, not interleaved.
@@ -119,6 +126,7 @@ export interface InfoSection {
   body: string[]        // paragraphs (HTML-safe strings)
   examples?: string[]   // plain example list, shown in a bordered box
   audioExamples?: AudioExample[]
+  notes?: NativeNote[]  // shown with the audio examples' explanations
 }
 
 export interface InfoStep extends BaseStep {

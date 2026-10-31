@@ -490,6 +490,43 @@ const unit11: Unit = {
             '<span class="italic">sto<span class="text-red-600 font-semibold">p</span> me &nbsp; ba<span class="text-red-600 font-semibold">ck</span>ground &nbsp; to<span class="text-red-600 font-semibold">p</span> buy</span>',
             'In very clear, slow speech, the Glottal Stop might not be used at all — so don\'t expect to hear it every time.',
           ],
+          notes: [
+            {
+              label: 'What is it?',
+              text: {
+                ru: 'Вместо звука <strong>/t/</strong> мы на мгновение закрываем горло (голосовые связки) — получается короткая пауза, «щелчок» в горле. Такой же звук есть в русском <em>«не-а»</em> и в английском <em>uh-oh</em>. Сам звук /t/ при этом не слышен.',
+                es: 'En lugar del sonido <strong>/t/</strong>, cerramos la garganta (las cuerdas vocales) por un instante: es una pequeña pausa, un «golpe» en la garganta, como en medio de <em>uh-oh</em> («oh-oh»). La /t/ no se oye.',
+              },
+            },
+            {
+              label: 'Inside a word — <em>rightly, Scotland</em>',
+              text: {
+                ru: 'Это происходит, когда /t/ стоит в конце слога, а следующий звук — согласный: <em>rightly</em> звучит как «рай<strong>ʔ</strong>-ли», <em>Scotland</em> — как «Ско<strong>ʔ</strong>-лэнд». Значок <strong>ʔ</strong> — это пауза в горле.',
+                es: 'Pasa cuando la /t/ está al final de una sílaba y el siguiente sonido es una consonante: <em>rightly</em> suena como «rai<strong>ʔ</strong>-li», <em>Scotland</em> como «Sko<strong>ʔ</strong>-land». El símbolo <strong>ʔ</strong> es esa pausa en la garganta.',
+              },
+            },
+            {
+              label: 'Between words — <em>it was, right side</em>',
+              text: {
+                ru: 'То же самое бывает на стыке слов, если следующее слово начинается с согласного: <em>it was</em> → «и<strong>ʔ</strong> воз», <em>right side</em> → «рай<strong>ʔ</strong> сайд».',
+                es: 'También pasa entre palabras, si la siguiente empieza por consonante: <em>it was</em> → «i<strong>ʔ</strong> uos», <em>right side</em> → «rai<strong>ʔ</strong> said».',
+              },
+            },
+            {
+              label: '/p/ and /k/ — <em>stop me, background</em>',
+              text: {
+                ru: 'Иногда так же «глотаются» /p/ и /k/, если следующий звук произносится в том же месте рта: в <em>stop me</em> оба звука (/p/ и /m/) делаются губами, в <em>background</em> оба (/k/ и /g/) — задней частью языка. Поэтому /p/ и /k/ почти не слышны.',
+                es: 'A veces también se «tragan» /p/ y /k/ si el siguiente sonido se hace en la misma parte de la boca: en <em>stop me</em>, /p/ y /m/ se hacen con los labios; en <em>background</em>, /k/ y /g/ con la parte de atrás de la lengua. Por eso /p/ y /k/ casi no se oyen.',
+              },
+            },
+            {
+              label: 'Not always',
+              text: {
+                ru: 'В очень чёткой, медленной речи Glottal Stop может не использоваться — не ждите, что услышите его каждый раз.',
+                es: 'En un habla muy clara y lenta, puede que no se use el Glottal Stop: no esperes oírlo siempre.',
+              },
+            },
+          ],
         },
       ],
     },

@@ -1,4 +1,4 @@
-import type { InfoStep, StepAttemptPayload } from '../../types'
+import type { InfoSection, InfoStep, NativeNote, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
 import MiniAudioButton from '../MiniAudioButton'
 import NativeExplanations from '../NativeExplanations'
@@ -7,6 +7,18 @@ import StepInstruction from './StepInstruction'
 interface Props {
   step: InfoStep
   onComplete: (payload: StepAttemptPayload) => void
+}
+
+// Audio examples' explanations first (headed by the phrase + IPA), then
+// any free-standing notes for the section.
+function sectionNotes(section: InfoSection): NativeNote[] {
+  const fromExamples = (section.audioExamples ?? [])
+    .filter(ex => ex.explanations)
+    .map(ex => ({
+      label: `${ex.written} <span class="font-mono font-normal text-teal-700">${ex.ipa}</span>`,
+      text: ex.explanations!,
+    }))
+  return [...fromExamples, ...(section.notes ?? [])]
 }
 
 export default function InfoCard({ step, onComplete }: Props) {
@@ -74,7 +86,7 @@ export default function InfoCard({ step, onComplete }: Props) {
                 </div>
               )}
 
-              {section.audioExamples && <NativeExplanations examples={section.audioExamples} />}
+              <NativeExplanations notes={sectionNotes(section)} />
             </div>
           ))}
         </div>

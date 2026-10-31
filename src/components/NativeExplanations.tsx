@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import type { AudioExample, ExplanationLang } from '../types'
+import { useEffect, useState } from 'react'
+import type { ExplanationLang, NativeNote } from '../types'
 
 const LANGS: { code: ExplanationLang; flag: string; label: string; heading: string }[] = [
   { code: 'ru', flag: '🇷🇺', label: 'Русский', heading: 'Что здесь происходит?' },
@@ -7,6 +7,7 @@ const LANGS: { code: ExplanationLang; flag: string; label: string; heading: stri
 ]
 
 const STORAGE_KEY = 'explanationLang'
+const CHANGE_EVENT = 'explanationlangchange'  // keeps every switch on the page in sync
 
 function readSaved(): ExplanationLang | null {
   try {
@@ -19,14 +20,20 @@ function readSaved(): ExplanationLang | null {
 
 // Flag switch + per-example explanation in the student's own language.
 // The chosen language is remembered on this device.
-export default function NativeExplanations({ examples }: { examples: AudioExample[] }) {
+export default function NativeExplanations({ notes }: { notes: NativeNote[] }) {
   const [lang, setLang] = useState<ExplanationLang | null>(readSaved)
-  const withText = examples.filter(ex => ex.explanations)
-  if (withText.length === 0) return null
+
+  useEffect(() => {
+    const onChange = (e: Event) => setLang((e as CustomEvent<ExplanationLang | null>).detail)
+    window.addEventListener(CHANGE_EVENT, onChange)
+    return () => window.removeEventListener(CHANGE_EVENT, onChange)
+  }, [])
+
+  if (notes.length === 0) return null
 
   function choose(code: ExplanationLang) {
     const next = lang === code ? null : code
-    setLang(next)
+    window.dispatchEvent(new CustomEvent(CHANGE_EVENT, { detail: next }))
     try {
       if (next) localStorage.setItem(STORAGE_KEY, next)
       else localStorage.removeItem(STORAGE_KEY)
@@ -63,12 +70,10 @@ export default function NativeExplanations({ examples }: { examples: AudioExampl
       {active && (
         <div lang={active.code} className="space-y-2.5">
           <p className="text-xs font-semibold uppercase tracking-wide text-teal-700">{active.heading}</p>
-          {withText.map((ex, i) => (
+          {notes.map((note, i) => (
             <div key={i} className="bg-white rounded-lg border border-slate-200 px-3 py-2 text-sm leading-relaxed">
-              <p className="font-semibold text-slate-800">
-                {ex.written} <span className="font-mono font-normal text-teal-700">{ex.ipa}</span>
-              </p>
-              <p className="text-slate-700" dangerouslySetInnerHTML={{ __html: ex.explanations![active.code] }} />
+              <p lang="en" className="font-semibold text-slate-800" dangerouslySetInnerHTML={{ __html: note.label }} />
+              <p className="text-slate-700" dangerouslySetInnerHTML={{ __html: note.text[active.code] }} />
             </div>
           ))}
         </div>
