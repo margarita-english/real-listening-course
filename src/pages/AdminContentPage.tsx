@@ -152,7 +152,7 @@ export default function AdminContentPage() {
           <h1 className="text-lg font-bold text-slate-900">Edit exercise texts — {unit.title}</h1>
         </div>
         <div className="flex items-center gap-3">
-          <Link to="/" className="text-xs text-slate-500 hover:text-slate-700">← Units</Link>
+          <Link to="/" className="text-sm text-teal-700 hover:text-teal-900 font-medium">← Units</Link>
           <button onClick={signOut} className="text-xs text-slate-400 hover:text-slate-600">Sign out</button>
         </div>
       </header>

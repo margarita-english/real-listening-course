@@ -91,6 +91,16 @@ export default function UnitPlayerPage() {
     }
   }
 
+  function goBack() {
+    if (!slug) return
+    const prev = finished ? unit!.steps.length - 1 : stepIndex - 1
+    if (prev < 0) return
+    setFinished(false)
+    localStorage.setItem(STORAGE_KEY(slug), String(prev))
+    setStepIndex(prev)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   if (finished) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
@@ -112,6 +122,9 @@ export default function UnitPlayerPage() {
           <Link to={`/unit/${slug}`} className="block text-sm text-teal-600 hover:text-teal-800 underline">
             🗺 View task map
           </Link>
+          <button onClick={goBack} className="text-sm text-slate-500 hover:text-slate-700 underline">
+            ← Back to the last step
+          </button>
         </div>
       </div>
     )
@@ -125,7 +138,7 @@ export default function UnitPlayerPage() {
     <div className="min-h-screen bg-slate-50">
       {/* Top bar */}
       <header className="sticky top-0 z-10 bg-white border-b border-slate-200 px-4 py-3 flex items-center gap-3">
-        <Link to={`/unit/${slug}`} className="text-slate-400 hover:text-slate-600 text-sm shrink-0">← Map</Link>
+        <Link to={`/unit/${slug}`} className="text-teal-700 hover:text-teal-900 text-sm font-medium shrink-0">← Map</Link>
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between mb-1">
             <span className="text-xs text-slate-400 truncate">{unit.title}</span>
@@ -179,6 +192,19 @@ export default function UnitPlayerPage() {
           {step.kind === 'wordBank'     && <WordBankStepView       key={step.id} step={step} onComplete={advance} />}
           {step.kind === 'noticeListen' && <NoticeListenStepView   key={step.id} step={step} onComplete={advance} />}
           {step.kind === 'discriminationGrid' && <DiscriminationGridStepView key={step.id} step={step} onComplete={advance} />}
+        </div>
+
+        <div className="mt-4 flex items-center justify-between gap-3">
+          <button
+            onClick={goBack}
+            disabled={stepIndex === 0}
+            className="px-4 py-2 border border-slate-300 bg-white text-slate-700 rounded-xl text-sm font-medium hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            ← Previous step
+          </button>
+          <Link to={`/unit/${slug}`} className="text-sm text-teal-700 hover:text-teal-900 underline">
+            🗺 Task map
+          </Link>
         </div>
       </main>
     </div>

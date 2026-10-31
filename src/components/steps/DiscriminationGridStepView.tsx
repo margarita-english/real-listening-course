@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { DiscriminationGridStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
 import StepInstruction from './StepInstruction'
+import ResultSummary from './ResultSummary'
 
 interface Props {
   step: DiscriminationGridStep
@@ -101,7 +102,7 @@ export default function DiscriminationGridStepView({ step, onComplete }: Props) 
         </button>
       ) : (
         <div className="space-y-2">
-          <p className="text-sm text-green-700 font-medium">✓ {totalCorrect} / {totalRepeats} correct</p>
+          <ResultSummary correct={totalCorrect} total={totalRepeats} />
           <button
             onClick={() => onComplete({ answers, score: totalCorrect / totalRepeats })}
             className="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl text-sm transition-colors"

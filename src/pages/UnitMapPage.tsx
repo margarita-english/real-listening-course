@@ -103,7 +103,7 @@ export default function UnitMapPage() {
   return (
     <div className="min-h-screen bg-slate-50">
       <header className="sticky top-0 z-10 bg-white border-b border-slate-200 px-4 py-3 flex items-center gap-3">
-        <Link to="/" className="text-slate-400 hover:text-slate-600 text-sm shrink-0">← Units</Link>
+        <Link to="/" className="text-teal-700 hover:text-teal-900 text-sm font-medium shrink-0">← Units</Link>
         <div className="flex-1 min-w-0">
           <span className="text-sm font-medium text-slate-700 truncate block">{unit.title}</span>
         </div>

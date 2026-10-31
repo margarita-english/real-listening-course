@@ -3,6 +3,7 @@ import type { GapFillStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
 import { answersMatch } from '../../lib/answerMatching'
 import StepInstruction from './StepInstruction'
+import ResultSummary from './ResultSummary'
 import WordNote from './WordNote'
 
 interface Props {
@@ -36,8 +37,9 @@ function SentenceWithGaps({
               value={values[i] ?? ''}
               disabled={checked}
               onChange={e => onChange(i, e.target.value)}
+              style={{ width: `${Math.max(6, (values[i] ?? '').length + 2)}ch` }}
               className={[
-                'inline-block border-b-2 text-sm px-1 py-0 mx-0.5 w-20 focus:outline-none bg-transparent transition-colors',
+                'inline-block border-b-2 text-sm px-1 py-0 mx-0.5 max-w-full focus:outline-none bg-transparent transition-colors',
                 !checked
                   ? 'border-slate-400 focus:border-teal-500'
                   : answersMatch(values[i] ?? '', answers[i])
@@ -115,9 +117,7 @@ export default function GapFillStepView({ step, onComplete }: Props) {
         </button>
       ) : (
         <div className="space-y-2">
-          <p className="text-sm text-green-700 font-medium">
-            ✓ {countCorrect()} / {totalGaps} correct
-          </p>
+          <ResultSummary correct={countCorrect()} total={totalGaps} />
           <button
             onClick={() => onComplete({ answers: inputs, score: countCorrect() / totalGaps })}
             className="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl text-sm transition-colors"

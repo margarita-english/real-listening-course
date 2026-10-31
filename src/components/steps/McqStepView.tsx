@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { McqStep, StepAttemptPayload } from '../../types'
 import StepInstruction from './StepInstruction'
+import ResultSummary from './ResultSummary'
 
 interface Props {
   step: McqStep
@@ -68,9 +69,10 @@ export default function McqStepView({ step, onComplete }: Props) {
         </button>
       ) : (
         <div className="space-y-2">
-          <p className="text-sm text-green-700 font-medium">
-            ✓ {step.questions.filter(q => selected[q.number] === q.answer).length} / {step.questions.length} correct
-          </p>
+          <ResultSummary
+            correct={step.questions.filter(q => selected[q.number] === q.answer).length}
+            total={step.questions.length}
+          />
           <button
             onClick={() => onComplete({
               answers: selected,

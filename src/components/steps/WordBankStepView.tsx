@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { WordBankStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
 import StepInstruction from './StepInstruction'
+import ResultSummary from './ResultSummary'
 
 interface Props {
   step: WordBankStep
@@ -147,7 +148,7 @@ export default function WordBankStepView({ step, onComplete }: Props) {
         </button>
       ) : (
         <div className="space-y-2">
-          <p className="text-sm text-green-700 font-medium">✓ {totalCorrect} / {totalGaps} correct</p>
+          <ResultSummary correct={totalCorrect} total={totalGaps} />
           <button
             onClick={() => onComplete({ answers: placed, score: totalCorrect / totalGaps })}
             className="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl text-sm transition-colors"
