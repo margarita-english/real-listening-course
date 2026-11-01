@@ -58,6 +58,10 @@ export default function InfoCard({ step, onComplete }: Props) {
             <div key={si} className="border border-slate-200 rounded-xl p-4 space-y-2.5">
               <h3 className="font-bold text-slate-900 text-sm">{section.heading}</h3>
 
+              {section.audioFile && (
+                <AudioPlayer src={`/audio/${section.audioFile}`} label={section.audioLabel} />
+              )}
+
               {section.body.map((line, i) => (
                 <p
                   key={i}

@@ -15,10 +15,18 @@ function toDigits(s: string): string {
 
 // Case-insensitive, trims whitespace, and treats a number word ("ten") and
 // its digit form ("10") as the same answer either way round.
+// `correct` may list alternatives separated by '|' ("much|often").
 export function answersMatch(input: string, correct: string): boolean {
-  const a = input.toLowerCase().trim()
-  const b = correct.toLowerCase().trim()
-  return a === b || toDigits(a) === toDigits(b)
+  const a = input.toLowerCase().trim().replace(/’/g, "'")
+  return correct.split('|').some(alt => {
+    const b = alt.toLowerCase().trim()
+    return a === b || toDigits(a) === toDigits(b)
+  })
+}
+
+// How a correct answer is shown to the student: alternatives joined by "or".
+export function displayAnswer(correct: string): string {
+  return correct.split('|').map(s => s.trim()).join(' or ')
 }
 
 // A part's own text plus its number-word/digit equivalent, if any —

@@ -61,6 +61,12 @@ export default function McqStepView({ step, onComplete }: Props) {
               )
             })}
           </div>
+          {checked && q.reason && (
+            <p
+              className="text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2"
+              dangerouslySetInnerHTML={{ __html: q.reason }}
+            />
+          )}
         </div>
       ))}
 

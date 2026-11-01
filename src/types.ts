@@ -12,6 +12,7 @@ export interface McqQuestion {
   stem: string        // text before the options
   options: string[]   // choices to click
   answer: string      // correct option text
+  reason?: string     // why, shown after checking (e.g. True/False evidence from the interview)
 }
 
 // A gap is marked with ___ in the sentence string.
@@ -19,8 +20,12 @@ export interface McqQuestion {
 export interface GapSentence {
   number: number
   text: string        // sentence with ___ for each blank
-  answers: string[]   // one entry per blank
+  answers: string[]   // one entry per blank; 'much|often' accepts either
   note?: WordNote     // "Do you know what X is?" check + Learn more
+  // Per-sentence clip, e.g. one excerpt per item, distinct from the single
+  // step-level BaseStep.audioFile.
+  audioFile?: string
+  audioLabel?: string
 }
 
 // A word students may not know (often cultural), asked as Yes/No with a
@@ -43,6 +48,7 @@ export interface QaQuestion {
   // Dictation-style exact-transcription grading (every word must match) —
   // the default lenient keyword grading is for open discussion answers.
   strict?: boolean
+  answerNote?: string  // shown after the model answer, e.g. "15 words"
 }
 
 export interface WordBankItem {
@@ -76,6 +82,9 @@ export interface BaseStep {
   instruction: string
   audioFile?: string    // relative to /audio/, e.g. "unit11/176.mp3"
   audioLabel?: string   // e.g. "Track 176"
+  // More tracks after the main one, e.g. the answers track for checking
+  // ("Track 3 — check your answers").
+  extraAudio?: { file: string; label: string }[]
   // Overrides the default per-kind "What to do" text behind the ⓘ button
   // (see lib/stepHelp.ts). One short, simple sentence per line.
   help?: string[]
@@ -127,6 +136,8 @@ export interface InfoSection {
   examples?: string[]   // plain example list, shown in a bordered box
   audioExamples?: AudioExample[]
   notes?: NativeNote[]  // shown with the audio examples' explanations
+  audioFile?: string    // one recording of the whole section's examples
+  audioLabel?: string
 }
 
 export interface InfoStep extends BaseStep {

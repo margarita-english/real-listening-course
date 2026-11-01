@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import type { GapFillStep, StepAttemptPayload } from '../../types'
 import AudioPlayer from '../AudioPlayer'
-import { answersMatch } from '../../lib/answerMatching'
+import { answersMatch, displayAnswer } from '../../lib/answerMatching'
 import StepInstruction from './StepInstruction'
 import ResultSummary from './ResultSummary'
 import WordNote from './WordNote'
@@ -81,12 +81,19 @@ export default function GapFillStepView({ step, onComplete }: Props) {
       {step.audioFile && (
         <AudioPlayer src={`/audio/${step.audioFile}`} label={step.audioLabel} />
       )}
+      {step.extraAudio?.map(a => (
+        <AudioPlayer key={a.file} src={`/audio/${a.file}`} label={a.label} />
+      ))}
 
       <StepInstruction step={step} />
 
       <div className="space-y-3" ref={firstInputRef as any}>
         {step.questions.map((q, qi) => (
-          <div key={q.number} className="flex gap-2 text-sm text-slate-800">
+          <div key={q.number} className="space-y-1.5">
+          {q.audioFile && (
+            <AudioPlayer src={`/audio/${q.audioFile}`} label={q.audioLabel} />
+          )}
+          <div className="flex gap-2 text-sm text-slate-800">
             <span className="shrink-0 font-medium text-slate-500 w-5 text-right">{q.number}.</span>
             <div className="flex-1 leading-7">
               <SentenceWithGaps
@@ -98,11 +105,12 @@ export default function GapFillStepView({ step, onComplete }: Props) {
               />
               {checked && inputs[qi].some((v, gi) => !answersMatch(v, q.answers[gi])) && (
                 <span className="ml-2 text-xs text-slate-500">
-                  ✓ <span className="text-green-700">{q.answers.join(' / ')}</span>
+                  ✓ <span className="text-green-700">{q.answers.map(displayAnswer).join(' / ')}</span>
                 </span>
               )}
               {q.note && <WordNote note={q.note} />}
             </div>
+          </div>
           </div>
         ))}
       </div>

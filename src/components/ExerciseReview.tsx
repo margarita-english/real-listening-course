@@ -1,6 +1,6 @@
 import type { QaQuestion, Step } from '../types'
 import { isDictationCorrect, isQaAnswerCorrect } from '../lib/qaGrading'
-import { answersMatch } from '../lib/answerMatching'
+import { answersMatch, displayAnswer } from '../lib/answerMatching'
 import { isCorrection } from '../lib/errorCorrection'
 
 function isQaCorrect(q: QaQuestion, answer: string) {
@@ -74,7 +74,7 @@ export default function ExerciseReview({ step, attempt }: Props) {
                 )}
               </span>
             ))}
-            <span className="text-xs text-slate-400 ml-1">— correct: {q.answers.join(' / ')}</span>
+            <span className="text-xs text-slate-400 ml-1">— correct: {q.answers.map(displayAnswer).join(' / ')}</span>
           </p>
         ))}
       </div>

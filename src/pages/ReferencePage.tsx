@@ -159,13 +159,13 @@ export default function ReferencePage() {
                 <AudioPlayer src={`/audio/${unit.transcriptAudioFile}`} label="Full transcript" />
               )}
               <p className="text-xs text-slate-500">
-                <strong>I</strong> = Interviewer &nbsp;|&nbsp; <strong>S</strong> = {unit.intervieweeName}
+                <strong>I</strong> = Interviewer &nbsp;|&nbsp; <strong>{unit.intervieweeName[0]}</strong> = {unit.intervieweeName}
               </p>
             </div>
             {unit.transcript.map((line, i) => (
               <div key={i} className="flex gap-3 px-4 py-3">
                 <span className={`shrink-0 font-bold text-sm w-4 ${line.speaker === 'S' ? 'text-teal-600' : 'text-slate-400'}`}>
-                  {line.speaker}:
+                  {line.speaker === 'S' ? unit.intervieweeName[0] : line.speaker}:
                 </span>
                 <p className="text-sm text-slate-700 leading-relaxed">{line.text}</p>
               </div>

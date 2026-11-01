@@ -78,6 +78,7 @@ export default function QaStepView({ step, onComplete }: Props) {
                 <div className="bg-green-50 border border-green-200 rounded-lg px-3 py-2 text-sm text-green-800">
                   <span className="text-green-600 text-xs font-medium uppercase tracking-wide block mb-0.5">Model answer</span>
                   {q.modelAnswer}
+                  {q.answerNote && <span className="ml-1.5 text-xs text-green-600">({q.answerNote})</span>}
                 </div>
               </div>
             )}
